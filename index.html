@@ -34,391 +34,154 @@
   --shadow: 0 2px 12px rgba(0,0,0,0.07);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-}
-
-/* HEADER */
 .header {
   background: linear-gradient(135deg, #1c1814 0%, #2d2520 100%);
-  padding: 24px 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 24px 36px; display: flex; align-items: center; justify-content: space-between;
   box-shadow: var(--shadow-md);
 }
 .header-left { display: flex; align-items: center; gap: 14px; }
-.header-icon {
-  width: 42px; height: 42px;
-  background: var(--accent);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-}
-.header-brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  color: #fff;
-  letter-spacing: 0.01em;
-}
-.header-sub {
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  margin-top: 2px;
-  font-weight: 400;
-}
+.header-icon { width: 42px; height: 42px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.header-brand { font-family: 'Playfair Display', serif; font-size: 22px; color: #fff; letter-spacing: 0.01em; }
+.header-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; font-weight: 400; }
 .header-right { display: flex; gap: 16px; align-items: center; }
-.header-stat {
-  text-align: center;
-  background: rgba(255,255,255,0.07);
-  border-radius: 8px;
-  padding: 8px 16px;
-}
-.header-stat .hs-num {
-  font-size: 20px; font-weight: 700; color: #fff; line-height: 1;
-}
-.header-stat .hs-lbl {
-  font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px;
-}
+.header-stat { text-align: center; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 8px 16px; }
+.header-stat .hs-num { font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
+.header-stat .hs-lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
 
-/* TABS */
 .tabs-wrap {
-  background: var(--surface);
-  border-bottom: 2px solid var(--border);
-  padding: 0 36px;
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
+  background: var(--surface); border-bottom: 2px solid var(--border);
+  padding: 0 36px; display: flex; gap: 0; overflow-x: auto;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 .tab {
-  padding: 16px 22px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text3);
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-  white-space: nowrap;
-  transition: all 0.2s;
-  user-select: none;
-  letter-spacing: 0.01em;
-  margin-bottom: -2px;
+  padding: 16px 22px; font-size: 13px; font-weight: 600; color: var(--text3);
+  cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap;
+  transition: all 0.2s; user-select: none; letter-spacing: 0.01em; margin-bottom: -2px;
 }
 .tab:hover { color: var(--text); background: var(--surface2); }
 .tab.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--accent-light); }
 .tab.urgent-tab { color: var(--urgent); }
 .tab.urgent-tab.active { border-bottom-color: var(--urgent); background: var(--urgent-light); }
 .tab .count {
-  display: inline-block;
-  background: var(--surface2);
-  color: var(--text2);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 20px;
-  margin-left: 6px;
+  display: inline-block; background: var(--surface2); color: var(--text2);
+  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-left: 6px;
 }
 .tab.active .count { background: var(--accent); color: #fff; }
 .tab.urgent-tab.active .count { background: var(--urgent); color: #fff; }
 
-/* MAIN */
 .main { padding: 32px 36px; max-width: 1500px; margin: 0 auto; }
 .panel { display: none; }
 .panel.active { display: block; }
 
-/* CLIENT CARD */
 .client-card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 0;
-  margin-bottom: 28px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  border: 1px solid var(--border);
+  background: var(--surface); border-radius: var(--radius); padding: 0;
+  margin-bottom: 28px; box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border);
 }
 .client-card.urgent { border-left: 5px solid var(--urgent); }
 .client-card.compra { border-left: 5px solid var(--blue); }
 .client-card.alquiler { border-left: 5px solid var(--green); }
-
 .client-card-header {
-  padding: 16px 24px;
-  background: linear-gradient(to right, #f8f5f0, #fff);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 16px 24px; background: linear-gradient(to right, #f8f5f0, #fff);
+  border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;
 }
-.client-card-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text2);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.client-card-title .icon { font-size: 16px; }
-.urgent-label {
-  background: var(--urgent-light);
-  color: var(--urgent);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 20px;
-  letter-spacing: 0.05em;
-  border: 1px solid rgba(139,26,26,0.2);
-}
-
+.client-card-title { font-size: 13px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; }
+.urgent-label { background: var(--urgent-light); color: var(--urgent); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.05em; border: 1px solid rgba(139,26,26,0.2); }
 .client-body { padding: 20px 24px; }
-.client-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-}
-.client-field {
-  background: var(--surface2);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-}
-.client-field .lbl {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text3);
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.client-field .val {
-  font-size: 14px;
-  color: var(--text);
-  font-weight: 600;
-  line-height: 1.3;
-}
+.client-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.client-field { background: var(--surface2); border-radius: var(--radius-sm); padding: 12px 14px; border: 1px solid var(--border); }
+.client-field .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 5px; }
+.client-field .val { font-size: 14px; color: var(--text); font-weight: 600; line-height: 1.3; }
 
-/* BADGES */
-.badge {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 3px 12px;
-  border-radius: 20px;
-  letter-spacing: 0.02em;
-}
+.badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 20px; letter-spacing: 0.02em; }
 .badge-compra { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(26,63,107,0.2); }
 .badge-alquiler { background: var(--green-light); color: var(--green); border: 1px solid rgba(26,107,53,0.2); }
 .badge-urgente { background: var(--urgent-light); color: var(--urgent); border: 1px solid rgba(139,26,26,0.2); }
 
-/* STATS ROW */
-.stats-row {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
+/* STATS INTERACTIVOS */
+.stats-row { display: flex; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
 .stat-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 20px;
-  min-width: 130px;
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  background: var(--surface); border: 2px solid var(--border);
+  border-radius: var(--radius-sm); padding: 14px 20px; min-width: 140px;
+  box-shadow: var(--shadow); display: flex; align-items: center; gap: 12px;
+  cursor: pointer; transition: all 0.2s; user-select: none;
 }
+.stat-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.stat-card.active-filter { border-color: var(--accent); background: var(--accent-light); box-shadow: 0 4px 16px rgba(200,82,42,0.2); }
+.stat-card.active-filter .s-num { color: var(--accent); }
 .stat-card .s-icon { font-size: 22px; }
-.stat-card .s-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  color: var(--text);
-  line-height: 1;
-  font-weight: 700;
-}
-.stat-card .s-lbl {
-  font-size: 11px;
-  color: var(--text3);
-  margin-top: 2px;
-  font-weight: 500;
-}
+.stat-card .s-num { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text); line-height: 1; font-weight: 700; }
+.stat-card .s-lbl { font-size: 11px; color: var(--text3); margin-top: 2px; font-weight: 500; }
+.stat-card .s-hint { font-size: 9px; color: var(--accent); font-weight: 600; margin-top: 3px; opacity: 0; transition: opacity 0.2s; }
+.stat-card:hover .s-hint { opacity: 1; }
 
 /* TABLE */
-.table-wrap {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
+.table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .table-header {
-  padding: 16px 22px;
-  border-bottom: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 16px 22px; border-bottom: 2px solid var(--border); display: flex;
+  align-items: center; justify-content: space-between;
   background: linear-gradient(to right, #f8f5f0, #fff);
 }
-.table-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.table-title { font-size: 15px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.filter-badge {
+  background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(200,82,42,0.3);
+  display: none; align-items: center; gap: 6px; cursor: pointer;
 }
+.filter-badge.visible { display: inline-flex; }
 .table-scroll { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
 th {
-  background: #f0ece4;
-  color: var(--text2);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 11px 14px;
-  text-align: left;
-  border-bottom: 2px solid var(--border);
-  white-space: nowrap;
+  background: #f0ece4; color: var(--text2); font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; padding: 11px 14px;
+  text-align: left; border-bottom: 2px solid var(--border); white-space: nowrap;
+  cursor: pointer; user-select: none; transition: background 0.15s;
+  position: relative;
 }
-td {
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border);
-  color: var(--text);
-  vertical-align: middle;
-  line-height: 1.4;
-}
+th:hover { background: #e8e0d4; color: var(--text); }
+th.sort-asc::after { content: ' ↑'; color: var(--accent); font-weight: 900; }
+th.sort-desc::after { content: ' ↓'; color: var(--accent); font-weight: 900; }
+th.no-sort { cursor: default; }
+th.no-sort:hover { background: #f0ece4; color: var(--text2); }
+td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; line-height: 1.4; }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: #faf8f5; }
-.n {
-  color: var(--text3);
-  font-weight: 700;
-  font-size: 13px;
-  text-align: center;
-  background: var(--surface2);
-  border-radius: 6px;
-  padding: 4px 8px;
-  display: inline-block;
-  min-width: 28px;
-}
+tr.hidden-row { display: none; }
+
+.n { color: var(--text3); font-weight: 700; font-size: 13px; text-align: center; background: var(--surface2); border-radius: 6px; padding: 4px 8px; display: inline-block; min-width: 28px; }
 .prop-name { font-weight: 700; font-size: 13px; color: var(--text); }
-.prop-type {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 2px;
-  background: var(--accent-light);
-  display: inline-block;
-  padding: 1px 7px;
-  border-radius: 4px;
-}
+.prop-type { font-size: 10px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; background: var(--accent-light); display: inline-block; padding: 1px 7px; border-radius: 4px; }
 .price-val { font-weight: 700; color: var(--text); white-space: nowrap; font-size: 13px; }
 .price-sub { font-size: 10px; color: var(--text3); margin-top: 1px; }
 
-/* STATUS */
-.st {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
+.st { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
 .st-ok { background: var(--green-light); color: var(--green); border: 1px solid rgba(26,107,53,0.2); }
 .st-no { background: var(--red-light); color: var(--red); border: 1px solid rgba(139,26,26,0.2); }
 .st-pend { background: var(--amber-light); color: var(--amber); border: 1px solid rgba(138,85,0,0.2); }
 .st-desc { background: var(--gray-light); color: var(--gray); border: 1px solid rgba(90,85,80,0.2); }
 
-/* BUTTONS */
-.btn-wsp {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 11px; font-weight: 700;
-  padding: 6px 11px; border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(26,107,53,0.3);
-  background: var(--green-light); color: var(--green);
-  cursor: pointer; text-decoration: none; transition: all 0.15s; white-space: nowrap;
-}
-.btn-wsp:hover { background: #c8e8d0; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(26,107,53,0.2); }
-.btn-link {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: 11px; font-weight: 600;
-  padding: 6px 11px; border-radius: var(--radius-sm);
-  border: 1.5px solid var(--border2);
-  background: var(--surface); color: var(--text2);
-  cursor: pointer; text-decoration: none; transition: all 0.15s; white-space: nowrap;
-}
+.btn-wsp { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 6px 11px; border-radius: var(--radius-sm); border: 1.5px solid rgba(26,107,53,0.3); background: var(--green-light); color: var(--green); cursor: pointer; text-decoration: none; transition: all 0.15s; white-space: nowrap; }
+.btn-wsp:hover { background: #c8e8d0; transform: translateY(-1px); }
+.btn-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 6px 11px; border-radius: var(--radius-sm); border: 1.5px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; text-decoration: none; transition: all 0.15s; white-space: nowrap; }
 .btn-link:hover { border-color: var(--text); color: var(--text); transform: translateY(-1px); }
-.btn-maps {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: 11px; font-weight: 700;
-  padding: 6px 11px; border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(26,63,107,0.3);
-  background: var(--blue-light); color: var(--blue);
-  cursor: pointer; text-decoration: none; transition: all 0.15s; white-space: nowrap;
-}
+.btn-maps { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 6px 11px; border-radius: var(--radius-sm); border: 1.5px solid rgba(26,63,107,0.3); background: var(--blue-light); color: var(--blue); cursor: pointer; text-decoration: none; transition: all 0.15s; white-space: nowrap; }
 .btn-maps:hover { background: #c8d8f0; transform: translateY(-1px); }
 
-/* WSP PANEL */
-.wsp-panel {
-  display: none; margin-top: 24px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md);
-}
-.wsp-panel-header {
-  background: linear-gradient(to right, #1a6b35, #1e8040);
-  padding: 14px 22px;
-  font-size: 13px; font-weight: 700; color: #fff;
-  display: flex; align-items: center; justify-content: space-between;
-}
+.wsp-panel { display: none; margin-top: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+.wsp-panel-header { background: linear-gradient(to right, #1a6b35, #1e8040); padding: 14px 22px; font-size: 13px; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: space-between; }
 .wsp-panel-body { padding: 20px 22px; }
-.wsp-msg {
-  font-size: 13px; line-height: 1.75; color: var(--text);
-  white-space: pre-wrap; background: var(--bg);
-  border-radius: var(--radius-sm); padding: 16px 18px;
-  border: 1px solid var(--border); font-weight: 400;
-}
+.wsp-msg { font-size: 13px; line-height: 1.75; color: var(--text); white-space: pre-wrap; background: var(--bg); border-radius: var(--radius-sm); padding: 16px 18px; border: 1px solid var(--border); font-weight: 400; }
 .wsp-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
-.btn-copy-msg {
-  padding: 9px 18px; font-size: 12px; font-weight: 700;
-  border-radius: var(--radius-sm); border: 1.5px solid var(--border2);
-  background: var(--surface); color: var(--text); cursor: pointer; transition: all 0.15s;
-}
+.btn-copy-msg { padding: 9px 18px; font-size: 12px; font-weight: 700; border-radius: var(--radius-sm); border: 1.5px solid var(--border2); background: var(--surface); color: var(--text); cursor: pointer; transition: all 0.15s; }
 .btn-copy-msg:hover { background: var(--surface2); }
-.btn-open-wsp {
-  padding: 9px 18px; font-size: 12px; font-weight: 700;
-  border-radius: var(--radius-sm); border: 1.5px solid rgba(26,107,53,0.3);
-  background: var(--green-light); color: var(--green); cursor: pointer;
-  text-decoration: none; transition: all 0.15s;
-  display: inline-flex; align-items: center; gap: 6px;
-}
+.btn-open-wsp { padding: 9px 18px; font-size: 12px; font-weight: 700; border-radius: var(--radius-sm); border: 1.5px solid rgba(26,107,53,0.3); background: var(--green-light); color: var(--green); cursor: pointer; text-decoration: none; transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px; }
 .btn-open-wsp:hover { background: #c8e8d0; }
 .copied-ok { font-size: 12px; color: var(--green); display: none; align-items: center; gap: 4px; font-weight: 600; }
 
-.empty-row td {
-  text-align: center; color: var(--text3); font-style: italic; padding: 40px;
-  font-size: 13px;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center; padding: 28px;
-  font-size: 11px; color: var(--text3);
-  border-top: 1px solid var(--border); margin-top: 36px;
-  font-weight: 500; letter-spacing: 0.03em;
-}
+.empty-row td { text-align: center; color: var(--text3); font-style: italic; padding: 40px; font-size: 13px; }
+.footer { text-align: center; padding: 28px; font-size: 11px; color: var(--text3); border-top: 1px solid var(--border); margin-top: 36px; font-weight: 500; letter-spacing: 0.03em; }
 
 @media (max-width: 768px) {
   .header, .main { padding: 16px; }
@@ -441,7 +204,7 @@ tr:hover td { background: #faf8f5; }
   <div class="header-right">
     <div class="header-stat"><div class="hs-num">13</div><div class="hs-lbl">Propiedades</div></div>
     <div class="header-stat"><div class="hs-num">4</div><div class="hs-lbl">Clientes</div></div>
-    <div class="header-stat" id="hdate-stat"><div class="hs-num" id="hdate" style="font-size:13px;"></div><div class="hs-lbl">Actualizado</div></div>
+    <div class="header-stat"><div class="hs-num" id="hdate" style="font-size:13px;"></div><div class="hs-lbl">Actualizado</div></div>
   </div>
 </div>
 
@@ -458,7 +221,7 @@ tr:hover td { background: #faf8f5; }
 <div id="panel-surco" class="panel active">
   <div class="client-card compra">
     <div class="client-card-header">
-      <div class="client-card-title"><span class="icon">👤</span> Requerimiento del cliente</div>
+      <div class="client-card-title">👤 Requerimiento del cliente</div>
       <span class="badge badge-compra">Compra</span>
     </div>
     <div class="client-body">
@@ -473,27 +236,54 @@ tr:hover td { background: #faf8f5; }
     </div>
   </div>
   <div class="stats-row">
-    <div class="stat-card"><span class="s-icon">🏠</span><div><div class="s-num">9</div><div class="s-lbl">Opciones</div></div></div>
-    <div class="stat-card"><span class="s-icon">✅</span><div><div class="s-num">4</div><div class="s-lbl">Aceptaron comisión</div></div></div>
-    <div class="stat-card"><span class="s-icon">❌</span><div><div class="s-num">2</div><div class="s-lbl">No aceptaron</div></div></div>
-    <div class="stat-card"><span class="s-icon">⏳</span><div><div class="s-num">3</div><div class="s-lbl">Por confirmar</div></div></div>
+    <div class="stat-card" onclick="filterTable('surco','all')" id="stat-surco-all">
+      <span class="s-icon">🏠</span><div><div class="s-num">9</div><div class="s-lbl">Total opciones</div><div class="s-hint">Ver todas</div></div>
+    </div>
+    <div class="stat-card" onclick="filterTable('surco','ok')" id="stat-surco-ok">
+      <span class="s-icon">✅</span><div><div class="s-num">4</div><div class="s-lbl">Aceptaron comisión</div><div class="s-hint">Filtrar</div></div>
+    </div>
+    <div class="stat-card" onclick="filterTable('surco','no')" id="stat-surco-no">
+      <span class="s-icon">❌</span><div><div class="s-num">2</div><div class="s-lbl">No aceptaron</div><div class="s-hint">Filtrar</div></div>
+    </div>
+    <div class="stat-card" onclick="filterTable('surco','pend')" id="stat-surco-pend">
+      <span class="s-icon">⏳</span><div><div class="s-num">3</div><div class="s-lbl">Por confirmar</div><div class="s-hint">Filtrar</div></div>
+    </div>
   </div>
   <div class="table-wrap">
-    <div class="table-header"><span class="table-title">🏘 Propiedades encontradas</span></div>
-    <div class="table-scroll"><table>
-      <thead><tr><th>#</th><th>Tipo / Dirección</th><th>Precio</th><th>Área</th><th>Dorm.</th><th>Coch.</th><th>Corredor</th><th>Estado</th><th>Comisión</th><th>Maps</th><th>Aviso</th><th>WhatsApp</th></tr></thead>
-      <tbody>
-        <tr><td><span class="n">1</span></td><td><div class="prop-name">Calle La Esparceta</div><div class="prop-type">Flat + Aires</div></td><td><div class="price-val">USD 250,000</div><div class="price-sub">≈ S/ 850,000</div></td><td>397 m²</td><td>3</td><td>2</td><td style="font-size:11px;font-weight:600;">Opción Uno Inmobiliaria</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td style="font-size:11px;">—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Calle+La+Esparceta+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-flat-aires-en-valle-hermoso-149934285.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51966739026','Opción Uno Inmobiliaria','Flat + Aires','Calle La Esparceta','USD 250,000','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">2</span></td><td><div class="prop-name">Calle El Cascajal c.1</div><div class="prop-type">Dúplex</div></td><td><div class="price-val">USD 250,000</div><div class="price-sub">≈ S/ 837,000</div></td><td>260 m²</td><td>4</td><td>2</td><td style="font-size:11px;font-weight:600;">Rafael Reyes Martel</td><td><span class="st st-no">❌ No aceptó</span></td><td style="font-size:11px;">—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Calle+El+Cascajal+1+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-buscas-el-hogar-perfecto!-elcascajal-valle-hermoso-146023142.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51999401299','Rafael Reyes Martel','Dúplex','Calle El Cascajal c.1','USD 250,000','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">3</span></td><td><div class="prop-name">Calle El Cascajal c.1</div><div class="prop-type">Dúplex</div></td><td><div class="price-val">USD 250,000</div><div class="price-sub">S/ 860,000</div></td><td>260 m²</td><td>4</td><td>2</td><td style="font-size:11px;font-weight:600;">Cecilia Olaechea</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td style="font-size:11px;">—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Calle+El+Cascajal+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-buscas-el-hogar-perfecto!-elcascajal-valle-hermoso-146023142.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51999360570','Cecilia Olaechea','Dúplex','Calle El Cascajal c.1','USD 250,000','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">4</span></td><td><div class="prop-name">Los Jazmines 114 Dpto 302</div><div class="prop-type">Dúplex</div></td><td><div class="price-val">USD 205,000</div><div class="price-sub">S/ 881,000</div></td><td>389/262 m²</td><td>4</td><td>2</td><td style="font-size:11px;font-weight:600;">SVC / Joe Martinez</td><td><span class="st st-ok">✅ Aceptó</span></td><td style="font-size:11px;">—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Los+Jazmines+114+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-remato-duplex-en-valle-hermoso-surco-146879106.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51904160987','SVC / Joe Martinez','Dúplex','Los Jazmines 114','USD 205,000','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">5</span></td><td><div class="prop-name">Los Cedros</div><div class="prop-type">Departamento</div></td><td><div class="price-val">USD 249,500</div><div class="price-sub">S/ 865,000</div></td><td>185/149 m²</td><td>3</td><td>2</td><td style="font-size:11px;font-weight:600;">Grecy Arrieta</td><td><span class="st st-ok">✅ Aceptó</span></td><td style="font-size:11px;">3% — 50/50</td><td><a class="btn-maps" href="https://maps.google.com/?q=Los+Cedros+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/veclapin-venta-de-departamento-en-valle-hermoso-santiago-de-surco-3-dormitorios-ascensor-144521759" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51975444939','Grecy Arrieta','Departamento','Los Cedros','USD 249,500','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">6</span></td><td><div class="prop-name">Gerónimo de Aliaga Sur 595</div><div class="prop-type">Departamento</div></td><td><div class="price-val">USD 245,000</div><div class="price-sub">S/ 833,000</div></td><td>157/147 m²</td><td>3</td><td>3</td><td style="font-size:11px;font-weight:600;">KGR Inmobiliaria</td><td><span class="st st-ok">✅ Aceptó</span></td><td style="font-size:11px;">Dueño paga 2%</td><td><a class="btn-maps" href="https://maps.google.com/?q=Geronimo+de+Aliaga+Sur+595+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/veclapin-venta-de-departamento-en-valle-hermoso-santiago-de-surco-3-dormitorios-ascensor-146857605" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51981424727','KGR Inmobiliaria','Departamento','Gerónimo de Aliaga Sur 595','USD 245,000','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">7</span></td><td><div class="prop-name">La Parra (Valle Hermoso)</div><div class="prop-type">Departamento</div></td><td><div class="price-val">USD 245,000</div><div class="price-sub">S/ 835,400</div></td><td>183/141 m²</td><td>4</td><td>1</td><td style="font-size:11px;font-weight:600;">Paola Alban Group</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td style="font-size:11px;">—</td><td><a class="btn-maps" href="https://maps.google.com/?q=La+Parra+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-departamento-en-primer-piso-de-4-habitaciones-en-surco-149730895.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51978807961','Paola Alban Group','Departamento','La Parra (Valle Hermoso)','USD 245,000','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">8</span></td><td><div class="prop-name">Av. Reynaldo Vivanco</div><div class="prop-type">Departamento</div></td><td><div class="price-val">Consultar</div></td><td>204 m²</td><td>3</td><td>2</td><td style="font-size:11px;font-weight:600;">Jorge Cabrera</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td style="font-size:11px;">—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Av+Reynaldo+Vivanco+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/1816354779081407/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51980961551','Jorge Cabrera','Departamento','Av. Reynaldo Vivanco','precio a consultar','surco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">9</span></td><td><div class="prop-name">Los Jazmines / Los Fresnos</div><div class="prop-type">Dúplex</div></td><td><div class="price-val">USD 210,000</div></td><td>134 m² + aires</td><td>4</td><td>2</td><td style="font-size:11px;font-weight:600;">Kissy Casas</td><td><span class="st st-ok">✅ Aceptó</span></td><td style="font-size:11px;">45% — dueño muda sep.</td><td><a class="btn-maps" href="https://maps.app.goo.gl/PuHKzAnM8npzn9xy5" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.facebook.com/share/1CkSLYP1in/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51965991369','Kissy Casas','Dúplex','Los Jazmines / Los Fresnos','USD 210,000','surco');return false;">💬 Chat</a></td></tr>
+    <div class="table-header">
+      <span class="table-title">🏘 Propiedades encontradas</span>
+      <span class="filter-badge" id="filterbadge-surco" onclick="filterTable('surco','all')">✕ Quitar filtro</span>
+    </div>
+    <div class="table-scroll">
+    <table id="table-surco">
+      <thead><tr>
+        <th class="no-sort">#</th>
+        <th onclick="sortTable('surco',1)">Tipo / Dirección</th>
+        <th onclick="sortTable('surco',2)">Distrito</th>
+        <th onclick="sortTable('surco',3)">Precio</th>
+        <th onclick="sortTable('surco',4)">Área</th>
+        <th onclick="sortTable('surco',5)">Dorm.</th>
+        <th onclick="sortTable('surco',6)">Coch.</th>
+        <th onclick="sortTable('surco',7)">Corredor</th>
+        <th onclick="sortTable('surco',8)">Estado</th>
+        <th onclick="sortTable('surco',9)">Comisión</th>
+        <th class="no-sort">Maps</th>
+        <th class="no-sort">Aviso</th>
+        <th class="no-sort">WhatsApp</th>
+      </tr></thead>
+      <tbody id="tbody-surco">
+        <tr data-status="pend"><td><span class="n">1</span></td><td><div class="prop-name">Calle La Esparceta</div><div class="prop-type">Flat + Aires</div></td><td>Santiago de Surco</td><td data-val="250000"><div class="price-val">USD 250,000</div><div class="price-sub">≈ S/ 850,000</div></td><td data-val="397">397 m²</td><td data-val="3">3</td><td data-val="2">2</td><td>Opción Uno Inmobiliaria</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Calle+La+Esparceta+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-flat-aires-en-valle-hermoso-149934285.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51966739026','Opción Uno Inmobiliaria','Flat + Aires','Calle La Esparceta','USD 250,000','surco','Santiago de Surco','https://www.adondevivir.com/propiedades/clasificado/veclapin-flat-aires-en-valle-hermoso-149934285.html');return false;">💬 Chat</a></td></tr>
+        <tr data-status="no"><td><span class="n">2</span></td><td><div class="prop-name">Calle El Cascajal c.1</div><div class="prop-type">Dúplex</div></td><td>Santiago de Surco</td><td data-val="250000"><div class="price-val">USD 250,000</div><div class="price-sub">≈ S/ 837,000</div></td><td data-val="260">260 m²</td><td data-val="4">4</td><td data-val="2">2</td><td>Rafael Reyes Martel</td><td><span class="st st-no">❌ No aceptó</span></td><td>—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Calle+El+Cascajal+1+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-buscas-el-hogar-perfecto!-elcascajal-valle-hermoso-146023142.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51999401299','Rafael Reyes Martel','Dúplex','Calle El Cascajal c.1','USD 250,000','surco','Santiago de Surco','https://www.adondevivir.com/propiedades/clasificado/veclapin-buscas-el-hogar-perfecto!-elcascajal-valle-hermoso-146023142.html');return false;">💬 Chat</a></td></tr>
+        <tr data-status="pend"><td><span class="n">3</span></td><td><div class="prop-name">Calle El Cascajal c.1</div><div class="prop-type">Dúplex</div></td><td>Santiago de Surco</td><td data-val="250000"><div class="price-val">USD 250,000</div><div class="price-sub">S/ 860,000</div></td><td data-val="260">260 m²</td><td data-val="4">4</td><td data-val="2">2</td><td>Cecilia Olaechea</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Calle+El+Cascajal+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-buscas-el-hogar-perfecto!-elcascajal-valle-hermoso-146023142.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51999360570','Cecilia Olaechea','Dúplex','Calle El Cascajal c.1','USD 250,000','surco','Santiago de Surco','https://www.adondevivir.com/propiedades/clasificado/veclapin-buscas-el-hogar-perfecto!-elcascajal-valle-hermoso-146023142.html');return false;">💬 Chat</a></td></tr>
+        <tr data-status="ok"><td><span class="n">4</span></td><td><div class="prop-name">Los Jazmines 114 Dpto 302</div><div class="prop-type">Dúplex</div></td><td>Santiago de Surco</td><td data-val="205000"><div class="price-val">USD 205,000</div><div class="price-sub">S/ 881,000</div></td><td data-val="389">389/262 m²</td><td data-val="4">4</td><td data-val="2">2</td><td>SVC / Joe Martinez</td><td><span class="st st-ok">✅ Aceptó</span></td><td>—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Los+Jazmines+114+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-remato-duplex-en-valle-hermoso-surco-146879106.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51904160987','SVC / Joe Martinez','Dúplex','Los Jazmines 114','USD 205,000','surco','Santiago de Surco','https://www.adondevivir.com/propiedades/clasificado/veclapin-remato-duplex-en-valle-hermoso-surco-146879106.html');return false;">💬 Chat</a></td></tr>
+        <tr data-status="ok"><td><span class="n">5</span></td><td><div class="prop-name">Los Cedros</div><div class="prop-type">Departamento</div></td><td>Santiago de Surco</td><td data-val="249500"><div class="price-val">USD 249,500</div><div class="price-sub">S/ 865,000</div></td><td data-val="185">185/149 m²</td><td data-val="3">3</td><td data-val="2">2</td><td>Grecy Arrieta</td><td><span class="st st-ok">✅ Aceptó</span></td><td>3% — 50/50</td><td><a class="btn-maps" href="https://maps.google.com/?q=Los+Cedros+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/veclapin-venta-de-departamento-en-valle-hermoso-santiago-de-surco-3-dormitorios-ascensor-144521759" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51975444939','Grecy Arrieta','Departamento','Los Cedros','USD 249,500','surco','Santiago de Surco','https://urbania.pe/inmueble/clasificado/veclapin-venta-de-departamento-en-valle-hermoso-santiago-de-surco-3-dormitorios-ascensor-144521759');return false;">💬 Chat</a></td></tr>
+        <tr data-status="ok"><td><span class="n">6</span></td><td><div class="prop-name">Gerónimo de Aliaga Sur 595</div><div class="prop-type">Departamento</div></td><td>Santiago de Surco</td><td data-val="245000"><div class="price-val">USD 245,000</div><div class="price-sub">S/ 833,000</div></td><td data-val="157">157/147 m²</td><td data-val="3">3</td><td data-val="3">3</td><td>KGR Inmobiliaria</td><td><span class="st st-ok">✅ Aceptó</span></td><td>Dueño paga 2%</td><td><a class="btn-maps" href="https://maps.google.com/?q=Geronimo+de+Aliaga+Sur+595+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/veclapin-venta-de-departamento-en-valle-hermoso-santiago-de-surco-3-dormitorios-ascensor-146857605" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51981424727','KGR Inmobiliaria','Departamento','Gerónimo de Aliaga Sur 595','USD 245,000','surco','Santiago de Surco','https://urbania.pe/inmueble/clasificado/veclapin-venta-de-departamento-en-valle-hermoso-santiago-de-surco-3-dormitorios-ascensor-146857605');return false;">💬 Chat</a></td></tr>
+        <tr data-status="pend"><td><span class="n">7</span></td><td><div class="prop-name">La Parra (Valle Hermoso)</div><div class="prop-type">Departamento</div></td><td>Santiago de Surco</td><td data-val="245000"><div class="price-val">USD 245,000</div><div class="price-sub">S/ 835,400</div></td><td data-val="183">183/141 m²</td><td data-val="4">4</td><td data-val="1">1</td><td>Paola Alban Group</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><a class="btn-maps" href="https://maps.google.com/?q=La+Parra+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-departamento-en-primer-piso-de-4-habitaciones-en-surco-149730895.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51978807961','Paola Alban Group','Departamento','La Parra (Valle Hermoso)','USD 245,000','surco','Santiago de Surco','https://www.adondevivir.com/propiedades/clasificado/veclapin-departamento-en-primer-piso-de-4-habitaciones-en-surco-149730895.html');return false;">💬 Chat</a></td></tr>
+        <tr data-status="pend"><td><span class="n">8</span></td><td><div class="prop-name">Av. Reynaldo Vivanco</div><div class="prop-type">Departamento</div></td><td>Santiago de Surco</td><td data-val="0"><div class="price-val">Consultar</div></td><td data-val="204">204 m²</td><td data-val="3">3</td><td data-val="2">2</td><td>Jorge Cabrera</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><a class="btn-maps" href="https://maps.google.com/?q=Av+Reynaldo+Vivanco+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/1816354779081407/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51980961551','Jorge Cabrera','Departamento','Av. Reynaldo Vivanco','precio a consultar','surco','Santiago de Surco','https://www.facebook.com/marketplace/item/1816354779081407/');return false;">💬 Chat</a></td></tr>
+        <tr data-status="ok"><td><span class="n">9</span></td><td><div class="prop-name">Los Jazmines / Los Fresnos</div><div class="prop-type">Dúplex</div></td><td>Santiago de Surco</td><td data-val="210000"><div class="price-val">USD 210,000</div></td><td data-val="134">134 m² + aires</td><td data-val="4">4</td><td data-val="2">2</td><td>Kissy Casas</td><td><span class="st st-ok">✅ Aceptó</span></td><td>45% — dueño muda sep.</td><td><a class="btn-maps" href="https://maps.app.goo.gl/PuHKzAnM8npzn9xy5" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://www.facebook.com/share/1CkSLYP1in/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51965991369','Kissy Casas','Dúplex','Los Jazmines / Los Fresnos','USD 210,000','surco','Santiago de Surco','https://www.facebook.com/share/1CkSLYP1in/');return false;">💬 Chat</a></td></tr>
       </tbody>
-    </table></div>
+    </table>
+    </div>
   </div>
 </div>
 
@@ -501,7 +291,7 @@ tr:hover td { background: #faf8f5; }
 <div id="panel-barranco" class="panel">
   <div class="client-card alquiler">
     <div class="client-card-header">
-      <div class="client-card-title"><span class="icon">👤</span> Requerimiento del cliente</div>
+      <div class="client-card-title">👤 Requerimiento del cliente</div>
       <span class="badge badge-alquiler">Alquiler</span>
     </div>
     <div class="client-body">
@@ -516,21 +306,47 @@ tr:hover td { background: #faf8f5; }
     </div>
   </div>
   <div class="stats-row">
-    <div class="stat-card"><span class="s-icon">🏢</span><div><div class="s-num">4</div><div class="s-lbl">Opciones</div></div></div>
-    <div class="stat-card"><span class="s-icon">✅</span><div><div class="s-num">2</div><div class="s-lbl">Aceptaron comisión</div></div></div>
-    <div class="stat-card"><span class="s-icon">❌</span><div><div class="s-num">2</div><div class="s-lbl">No aceptaron</div></div></div>
+    <div class="stat-card" onclick="filterTable('barranco','all')" id="stat-barranco-all">
+      <span class="s-icon">🏢</span><div><div class="s-num">4</div><div class="s-lbl">Total opciones</div><div class="s-hint">Ver todas</div></div>
+    </div>
+    <div class="stat-card" onclick="filterTable('barranco','ok')" id="stat-barranco-ok">
+      <span class="s-icon">✅</span><div><div class="s-num">2</div><div class="s-lbl">Aceptaron comisión</div><div class="s-hint">Filtrar</div></div>
+    </div>
+    <div class="stat-card" onclick="filterTable('barranco','no')" id="stat-barranco-no">
+      <span class="s-icon">❌</span><div><div class="s-num">2</div><div class="s-lbl">No aceptaron</div><div class="s-hint">Filtrar</div></div>
+    </div>
   </div>
   <div class="table-wrap">
-    <div class="table-header"><span class="table-title">🏢 Propiedades encontradas</span></div>
-    <div class="table-scroll"><table>
-      <thead><tr><th>#</th><th>Modalidad</th><th>Tipo / Dirección</th><th>Precio</th><th>Área m²</th><th>$/m²</th><th>Score</th><th>Corredor</th><th>Estado</th><th>Comisión</th><th>Maps</th><th>Aviso</th><th>WhatsApp</th></tr></thead>
-      <tbody>
-        <tr><td><span class="n">1</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Bolognesi 160</div><div class="prop-type">Local Comercial</div></td><td><div class="price-val">USD 1,250/mes</div><div class="price-sub">≈ S/ 4,540</div></td><td>109</td><td>11</td><td>🟡 3/5</td><td style="font-size:11px;font-weight:600;">M.D.P. Severino</td><td><span class="st st-no">❌ No aceptó</span></td><td style="font-size:11px;">Solo en ventas</td><td><a class="btn-maps" href="https://maps.google.com/?q=Bolognesi+160+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149861715" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51988917843','M.D.P. Severino','Local Comercial','Bolognesi 160','USD 1,250/mes','barranco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">2</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Jr. García y García</div><div class="prop-type">Local Comercial</div></td><td><div class="price-val">USD 730/mes</div><div class="price-sub">≈ S/ 2,500</div></td><td>90</td><td>8</td><td>🟡 3/5</td><td style="font-size:11px;font-weight:600;">Serv. Inm. Barreda</td><td><span class="st st-ok">✅ Aceptó</span></td><td style="font-size:11px;">–5% por IR</td><td><a class="btn-maps" href="https://maps.google.com/?q=Jiron+Garcia+y+Garcia+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149703945" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51941104437','Serv. Inm. Barreda','Local Comercial','Jr. García y García','USD 730/mes','barranco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">3</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Cerca Parque Municipal</div><div class="prop-type">Casa</div></td><td><div class="price-val">USD 1,300/mes</div><div class="price-sub">≈ S/ 4,400</div></td><td>126</td><td>10</td><td>🟢 5/5</td><td style="font-size:11px;font-weight:600;">EXP Peru SAC</td><td><span class="st st-no">❌ No aceptó</span></td><td style="font-size:11px;">Ya compartía</td><td><a class="btn-maps" href="https://maps.google.com/?q=Parque+Municipal+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alclcain-alquiler-de-casa-en-barranco-lima-3-dormitorios-149086231" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51920500176','EXP Peru SAC','Casa','Cerca Parque Municipal Barranco','USD 1,300/mes','barranco');return false;">💬 Chat</a></td></tr>
-        <tr><td><span class="n">4</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Av. El Sol Este 599</div><div class="prop-type">Local Comercial</div></td><td><div class="price-val">USD 3,800/mes+IGV</div><div class="price-sub">≈ S/ 13,167</div></td><td>109</td><td>35</td><td>🟡 3/5</td><td style="font-size:11px;font-weight:600;">SAITO Serv. Inm.</td><td><span class="st st-desc">⬜ Descartado</span></td><td style="font-size:11px;">50/50 — 1 mes</td><td><a class="btn-maps" href="https://maps.google.com/?q=Av+El+Sol+Este+599+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-150060392" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51934532194','SAITO Serv. Inm.','Local Comercial','Av. El Sol Este 599','USD 3,800/mes + IGV','barranco');return false;">💬 Chat</a></td></tr>
+    <div class="table-header">
+      <span class="table-title">🏢 Propiedades encontradas</span>
+      <span class="filter-badge" id="filterbadge-barranco" onclick="filterTable('barranco','all')">✕ Quitar filtro</span>
+    </div>
+    <div class="table-scroll">
+    <table id="table-barranco">
+      <thead><tr>
+        <th class="no-sort">#</th>
+        <th class="no-sort">Modalidad</th>
+        <th onclick="sortTable('barranco',2)">Tipo / Dirección</th>
+        <th onclick="sortTable('barranco',3)">Distrito</th>
+        <th onclick="sortTable('barranco',4)">Precio/mes</th>
+        <th onclick="sortTable('barranco',5)">Área m²</th>
+        <th onclick="sortTable('barranco',6)">$/m²</th>
+        <th onclick="sortTable('barranco',7)">Score</th>
+        <th onclick="sortTable('barranco',8)">Corredor</th>
+        <th onclick="sortTable('barranco',9)">Estado</th>
+        <th onclick="sortTable('barranco',10)">Comisión</th>
+        <th class="no-sort">Maps</th>
+        <th class="no-sort">Aviso</th>
+        <th class="no-sort">WhatsApp</th>
+      </tr></thead>
+      <tbody id="tbody-barranco">
+        <tr data-status="no"><td><span class="n">1</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Bolognesi 160</div><div class="prop-type">Local Comercial</div></td><td>Barranco</td><td data-val="1250"><div class="price-val">USD 1,250/mes</div><div class="price-sub">≈ S/ 4,540</div></td><td data-val="109">109</td><td data-val="11">11</td><td>🟡 3/5</td><td>M.D.P. Severino</td><td><span class="st st-no">❌ No aceptó</span></td><td>Solo en ventas</td><td><a class="btn-maps" href="https://maps.google.com/?q=Bolognesi+160+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149861715" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51988917843','M.D.P. Severino','Local Comercial','Bolognesi 160','USD 1,250/mes','barranco','Barranco','https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149861715');return false;">💬 Chat</a></td></tr>
+        <tr data-status="ok"><td><span class="n">2</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Jr. García y García</div><div class="prop-type">Local Comercial</div></td><td>Barranco</td><td data-val="730"><div class="price-val">USD 730/mes</div><div class="price-sub">≈ S/ 2,500</div></td><td data-val="90">90</td><td data-val="8">8</td><td>🟡 3/5</td><td>Serv. Inm. Barreda</td><td><span class="st st-ok">✅ Aceptó</span></td><td>–5% por IR</td><td><a class="btn-maps" href="https://maps.google.com/?q=Jiron+Garcia+y+Garcia+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149703945" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51941104437','Serv. Inm. Barreda','Local Comercial','Jr. García y García','USD 730/mes','barranco','Barranco','https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149703945');return false;">💬 Chat</a></td></tr>
+        <tr data-status="no"><td><span class="n">3</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Cerca Parque Municipal</div><div class="prop-type">Casa</div></td><td>Barranco</td><td data-val="1300"><div class="price-val">USD 1,300/mes</div><div class="price-sub">≈ S/ 4,400</div></td><td data-val="126">126</td><td data-val="10">10</td><td>🟢 5/5</td><td>EXP Peru SAC</td><td><span class="st st-no">❌ No aceptó</span></td><td>Ya compartía</td><td><a class="btn-maps" href="https://maps.google.com/?q=Parque+Municipal+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alclcain-alquiler-de-casa-en-barranco-lima-3-dormitorios-149086231" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51920500176','EXP Peru SAC','Casa','Cerca Parque Municipal','USD 1,300/mes','barranco','Barranco','https://urbania.pe/inmueble/clasificado/alclcain-alquiler-de-casa-en-barranco-lima-3-dormitorios-149086231');return false;">💬 Chat</a></td></tr>
+        <tr data-status="ok"><td><span class="n">4</span></td><td><span class="badge badge-alquiler">Alquiler</span></td><td><div class="prop-name">Av. El Sol Este 599</div><div class="prop-type">Local Comercial</div></td><td>Barranco</td><td data-val="3800"><div class="price-val">USD 3,800/mes+IGV</div><div class="price-sub">≈ S/ 13,167</div></td><td data-val="109">109</td><td data-val="35">35</td><td>🟡 3/5</td><td>SAITO Serv. Inm.</td><td><span class="st st-desc">⬜ Descartado</span></td><td>50/50 — 1 mes</td><td><a class="btn-maps" href="https://maps.google.com/?q=Av+El+Sol+Este+599+Barranco" target="_blank">📍 Maps</a></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-150060392" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="#" onclick="showWsp('51934532194','SAITO Serv. Inm.','Local Comercial','Av. El Sol Este 599','USD 3,800/mes + IGV','barranco','Barranco','https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-150060392');return false;">💬 Chat</a></td></tr>
       </tbody>
-    </table></div>
+    </table>
+    </div>
   </div>
 </div>
 
@@ -538,14 +354,14 @@ tr:hover td { background: #faf8f5; }
 <div id="panel-victoria" class="panel">
   <div class="client-card alquiler">
     <div class="client-card-header">
-      <div class="client-card-title"><span class="icon">👤</span> Requerimiento del cliente</div>
+      <div class="client-card-title">👤 Requerimiento del cliente</div>
       <span class="badge badge-alquiler">Alquiler</span>
     </div>
     <div class="client-body">
       <div class="client-grid">
         <div class="client-field"><div class="lbl">👤 Contacto</div><div class="val">Sadita (cliente directo)</div></div>
         <div class="client-field"><div class="lbl">📍 Zona</div><div class="val">La Victoria</div></div>
-        <div class="client-field"><div class="lbl">🏭 Uso</div><div class="val">Almacén — materiales, repuestos y fierros de construcción</div></div>
+        <div class="client-field"><div class="lbl">🏭 Uso</div><div class="val">Almacén materiales, repuestos y fierros</div></div>
         <div class="client-field"><div class="lbl">📐 Área mínima</div><div class="val">100 m²</div></div>
         <div class="client-field"><div class="lbl">💰 Precio objetivo</div><div class="val">USD 7–10/m² (~USD 700–1,000/mes)</div></div>
       </div>
@@ -553,9 +369,20 @@ tr:hover td { background: #faf8f5; }
   </div>
   <div class="table-wrap">
     <div class="table-header"><span class="table-title">🏭 Propiedades encontradas</span></div>
-    <div class="table-scroll"><table>
-      <thead><tr><th>#</th><th>Tipo / Dirección</th><th>Precio/mes</th><th>Área m²</th><th>$/m²</th><th>Corredor</th><th>Estado</th><th>Comisión</th><th>Maps</th><th>Aviso</th><th>WhatsApp</th></tr></thead>
-      <tbody><tr class="empty-row"><td colspan="11">Sin propiedades aún — agrega el primer link</td></tr></tbody>
+    <div class="table-scroll"><table id="table-victoria">
+      <thead><tr>
+        <th class="no-sort">#</th>
+        <th onclick="sortTable('victoria',1)">Tipo / Dirección</th>
+        <th onclick="sortTable('victoria',2)">Distrito</th>
+        <th onclick="sortTable('victoria',3)">Precio/mes</th>
+        <th onclick="sortTable('victoria',4)">Área m²</th>
+        <th onclick="sortTable('victoria',5)">$/m²</th>
+        <th onclick="sortTable('victoria',6)">Corredor</th>
+        <th onclick="sortTable('victoria',7)">Estado</th>
+        <th onclick="sortTable('victoria',8)">Comisión</th>
+        <th class="no-sort">Maps</th><th class="no-sort">Aviso</th><th class="no-sort">WhatsApp</th>
+      </tr></thead>
+      <tbody id="tbody-victoria"><tr class="empty-row"><td colspan="12">Sin propiedades aún</td></tr></tbody>
     </table></div>
   </div>
 </div>
@@ -564,7 +391,7 @@ tr:hover td { background: #faf8f5; }
 <div id="panel-miraflores" class="panel">
   <div class="client-card urgent">
     <div class="client-card-header">
-      <div class="client-card-title"><span class="icon">⚠️</span> Requerimiento del cliente</div>
+      <div class="client-card-title">⚠️ Requerimiento del cliente</div>
       <span class="urgent-label">⚠ URGENTE — plazo 25 de junio</span>
     </div>
     <div class="client-body">
@@ -581,9 +408,23 @@ tr:hover td { background: #faf8f5; }
   </div>
   <div class="table-wrap">
     <div class="table-header"><span class="table-title">🏙 Propiedades encontradas</span></div>
-    <div class="table-scroll"><table>
-      <thead><tr><th>#</th><th>Tipo / Dirección</th><th>Precio</th><th>Área</th><th>Dorm.</th><th>Baños</th><th>Coch.</th><th>Score</th><th>Corredor</th><th>Estado</th><th>Comisión</th><th>Maps</th><th>Aviso</th><th>WhatsApp</th></tr></thead>
-      <tbody><tr class="empty-row"><td colspan="14">Sin propiedades aún — agrega el primer link</td></tr></tbody>
+    <div class="table-scroll"><table id="table-miraflores">
+      <thead><tr>
+        <th class="no-sort">#</th>
+        <th onclick="sortTable('miraflores',1)">Tipo / Dirección</th>
+        <th onclick="sortTable('miraflores',2)">Distrito</th>
+        <th onclick="sortTable('miraflores',3)">Precio</th>
+        <th onclick="sortTable('miraflores',4)">Área</th>
+        <th onclick="sortTable('miraflores',5)">Dorm.</th>
+        <th onclick="sortTable('miraflores',6)">Baños</th>
+        <th onclick="sortTable('miraflores',7)">Coch.</th>
+        <th onclick="sortTable('miraflores',8)">Score</th>
+        <th onclick="sortTable('miraflores',9)">Corredor</th>
+        <th onclick="sortTable('miraflores',10)">Estado</th>
+        <th onclick="sortTable('miraflores',11)">Comisión</th>
+        <th class="no-sort">Maps</th><th class="no-sort">Aviso</th><th class="no-sort">WhatsApp</th>
+      </tr></thead>
+      <tbody id="tbody-miraflores"><tr class="empty-row"><td colspan="15">Sin propiedades aún</td></tr></tbody>
     </table></div>
   </div>
 </div>
@@ -599,34 +440,45 @@ tr:hover td { background: #faf8f5; }
     <div class="wsp-actions">
       <button class="btn-copy-msg" onclick="copyMsg()">📋 Copiar mensaje</button>
       <a class="btn-open-wsp" id="wsp-link" href="#" target="_blank">💬 Abrir WhatsApp</a>
-      <span class="copied-ok" id="copied-ok">✅ Copiado al portapapeles</span>
+      <span class="copied-ok" id="copied-ok">✅ Copiado</span>
     </div>
   </div>
 </div>
 
-</div><!-- /main -->
-
+</div>
 <div class="footer">🏠 Base de Propiedades · Agencia Inmobiliaria · Actualizado: <span id="fdate"></span></div>
 
 <script>
-const CLIENT_DESC = {
-  surco: 'un departamento en Valle Hermoso, Santiago de Surco — presupuesto hasta USD 250,000',
-  barranco: 'un local o casa en Barranco para centro de operaciones Airbnb — área entre 80 y 250 m²',
-  victoria: 'un almacén en La Victoria — mínimo 100 m², uso para materiales, repuestos y fierros de construcción',
-  miraflores: 'un departamento en Miraflores o San Isidro — 2 o 3 dormitorios, presupuesto hasta USD 190,000 con crédito hipotecario aprobado. Necesitan mudarse antes del 25 de junio con urgencia'
+const CLIENT_CONTEXT = {
+  surco: { operacion: 'comprar', tipo: 'departamento', pregunta: '¿El inmueble cuenta con mínimo 2 cocheras? ¿Tiene terraza o área exterior?' },
+  barranco: { operacion: 'alquilar', tipo: 'local o casa para oficinas', pregunta: '¿El inmueble cuenta con estacionamiento o existe alguna opción cercana para estacionar? ¿El acceso es independiente?' },
+  victoria: { operacion: 'alquilar', tipo: 'almacén o local comercial', pregunta: '¿El local cuenta con acceso para vehículos de carga? ¿Tiene altura mínima de 3 metros?' },
+  miraflores: { operacion: 'comprar', tipo: 'departamento', pregunta: '¿El departamento está disponible para entrega inmediata? ¿Acepta financiamiento hipotecario?' }
 };
 
-function switchTab(t, el) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + t).classList.add('active');
-  el.classList.add('active');
-  document.getElementById('wsp-panel').style.display = 'none';
+function getHora() {
+  const h = new Date().getHours();
+  if (h >= 5 && h < 12) return 'buenos días';
+  if (h >= 12 && h < 19) return 'buenas tardes';
+  return 'buenas noches';
 }
 
-function showWsp(tel, corredor, tipo, dir, precio, tab) {
-  const desc = CLIENT_DESC[tab];
-  const msg = `Hola, buenos días. Le saluda Rosarela de parte de nuestra agencia inmobiliaria.\n\nTenemos un cliente interesado en ${desc}.\n\nVi su aviso de ${tipo} en ${dir} a ${precio}. ¿Podría confirmarme la disponibilidad y si comparte comisión con otros corredores?\n\nQuedo atenta, muchas gracias.`;
+function showWsp(tel, corredor, tipo, dir, precio, tab, distrito, linkAviso) {
+  const ctx = CLIENT_CONTEXT[tab];
+  const saludo = corredor && corredor.length > 3 ? corredor : null;
+  const hora = getHora();
+
+  const msg = `Hola, ${hora}${saludo ? ', ' + saludo : ''}. Te contactamos porque tenemos un cliente activo buscando ${ctx.operacion} un inmueble en ${distrito} y este ${tipo.toLowerCase()} nos pareció una buena opción para presentarle.
+
+Quería consultar si sigue disponible y si manejan comisión compartida con corredoras externas en caso de concretarse una visita o negociación, y qué porcentaje manejan.
+
+Asimismo, ${ctx.pregunta}
+
+🔗 ${linkAviso}
+
+Quedo atenta, muchas gracias.
+Fiorela`;
+
   document.getElementById('wsp-msg').innerText = msg;
   document.getElementById('wsp-link').href = 'https://wa.me/' + tel + '?text=' + encodeURIComponent(msg);
   const panel = document.getElementById('wsp-panel');
@@ -641,6 +493,65 @@ function copyMsg() {
     ok.style.display = 'flex';
     setTimeout(() => { ok.style.display = 'none'; }, 2500);
   });
+}
+
+function switchTab(t, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + t).classList.add('active');
+  el.classList.add('active');
+  document.getElementById('wsp-panel').style.display = 'none';
+}
+
+// FILTER
+let activeFilters = {};
+function filterTable(tab, status) {
+  const tbody = document.getElementById('tbody-' + tab);
+  if (!tbody) return;
+  const rows = tbody.querySelectorAll('tr[data-status]');
+  rows.forEach(r => {
+    if (status === 'all') { r.classList.remove('hidden-row'); }
+    else { r.classList.toggle('hidden-row', r.dataset.status !== status); }
+  });
+  activeFilters[tab] = status;
+  // Update stat cards
+  ['all','ok','no','pend','desc'].forEach(s => {
+    const el = document.getElementById('stat-' + tab + '-' + s);
+    if (el) el.classList.toggle('active-filter', s === status && status !== 'all');
+  });
+  const badge = document.getElementById('filterbadge-' + tab);
+  if (badge) badge.classList.toggle('visible', status !== 'all');
+}
+
+// SORT
+let sortState = {};
+function sortTable(tab, colIdx) {
+  const table = document.getElementById('table-' + tab);
+  const tbody = document.getElementById('tbody-' + tab);
+  if (!tbody) return;
+  const key = tab + '-' + colIdx;
+  const asc = sortState[key] !== 'asc';
+  sortState[key] = asc ? 'asc' : 'desc';
+
+  // Update header arrows
+  table.querySelectorAll('th').forEach((th, i) => {
+    th.classList.remove('sort-asc','sort-desc');
+    if (i === colIdx) th.classList.add(asc ? 'sort-asc' : 'sort-desc');
+  });
+
+  const rows = Array.from(tbody.querySelectorAll('tr[data-status]'));
+  rows.sort((a, b) => {
+    const aCell = a.cells[colIdx];
+    const bCell = b.cells[colIdx];
+    if (!aCell || !bCell) return 0;
+    const aNum = aCell.dataset.val !== undefined ? parseFloat(aCell.dataset.val) : NaN;
+    const bNum = bCell.dataset.val !== undefined ? parseFloat(bCell.dataset.val) : NaN;
+    if (!isNaN(aNum) && !isNaN(bNum)) return asc ? aNum - bNum : bNum - aNum;
+    const aT = aCell.innerText.trim().toLowerCase();
+    const bT = bCell.innerText.trim().toLowerCase();
+    return asc ? aT.localeCompare(bT) : bT.localeCompare(aT);
+  });
+  rows.forEach(r => tbody.appendChild(r));
 }
 
 const now = new Date();
