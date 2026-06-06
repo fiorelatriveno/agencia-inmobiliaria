@@ -6,34 +6,20 @@
 <title>Base de Propiedades — Agencia Inmobiliaria</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#f4f1ec;--surface:#fff;--surface2:#f0ece4;--border:#e0d9ce;--border2:#c8bfb2;
-  --text:#1c1814;--text2:#5c574f;--text3:#9c9488;
-  --accent:#c8522a;--accent-light:#fdf0eb;
-  --green:#1a6b35;--green-light:#e6f5ec;
-  --blue:#1a3f6b;--blue-light:#e6eef8;
-  --amber:#8a5500;--amber-light:#fef5e0;
-  --red:#8b1a1a;--red-light:#fdeaea;
-  --urgent:#8b1a1a;--urgent-light:#fdeaea;
-  --gray:#5a5550;--gray-light:#f0ece4;
-  --radius:12px;--radius-sm:8px;
-  --shadow:0 2px 12px rgba(0,0,0,0.07);--shadow-md:0 4px 20px rgba(0,0,0,0.10);
-}
+:root{--bg:#f4f1ec;--surface:#fff;--surface2:#f0ece4;--border:#e0d9ce;--border2:#c8bfb2;--text:#1c1814;--text2:#5c574f;--text3:#9c9488;--accent:#c8522a;--accent-light:#fdf0eb;--green:#1a6b35;--green-light:#e6f5ec;--blue:#1a3f6b;--blue-light:#e6eef8;--amber:#8a5500;--amber-light:#fef5e0;--red:#8b1a1a;--red-light:#fdeaea;--urgent:#8b1a1a;--urgent-light:#fdeaea;--gray:#5a5550;--gray-light:#f0ece4;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(0,0,0,0.07);--shadow-md:0 4px 20px rgba(0,0,0,0.10);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
+body{font-family:"Outfit",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 .header{background:linear-gradient(135deg,#1c1814 0%,#2d2520 100%);padding:24px 36px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow-md);}
 .header-left{display:flex;align-items:center;gap:14px;}
 .header-icon{width:42px;height:42px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;}
-.header-brand{font-family:'Playfair Display',serif;font-size:22px;color:#fff;}
+.header-brand{font-family:"Playfair Display",serif;font-size:22px;color:#fff;}
 .header-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;}
 .header-right{display:flex;gap:12px;align-items:center;}
 .header-stat{text-align:center;background:rgba(255,255,255,0.07);border-radius:8px;padding:8px 16px;}
 .header-stat .hs-num{font-size:20px;font-weight:700;color:#fff;line-height:1;}
 .header-stat .hs-lbl{font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;}
-.btn-excel{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:9px 16px;border-radius:var(--radius-sm);border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.1);color:#fff;cursor:pointer;transition:all 0.18s;white-space:nowrap;letter-spacing:0.01em;}
-.btn-excel:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.4);}
-
+.btn-excel{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:9px 16px;border-radius:var(--radius-sm);border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.1);color:#fff;cursor:pointer;transition:all 0.18s;white-space:nowrap;}
+.btn-excel:hover{background:rgba(255,255,255,0.2);}
 .tabs-wrap{background:var(--surface);border-bottom:2px solid var(--border);padding:0 36px;display:flex;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
 .tab{padding:16px 22px;font-size:13px;font-weight:600;color:var(--text3);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s;user-select:none;margin-bottom:-2px;}
 .tab:hover{color:var(--text);background:var(--surface2);}
@@ -43,11 +29,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .tab .count{display:inline-block;background:var(--surface2);color:var(--text2);font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;}
 .tab.active .count{background:var(--accent);color:#fff;}
 .tab.urgent-tab.active .count{background:var(--urgent);color:#fff;}
-
 .main{padding:28px 36px;max-width:1600px;margin:0 auto;}
 .panel{display:none;}.panel.active{display:block;}
-
-/* CLIENT CARD */
 .client-card{background:var(--surface);border-radius:var(--radius);margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;}
 .client-card.urgent{border-left:4px solid var(--urgent);}
 .client-card.compra{border-left:4px solid var(--blue);}
@@ -61,8 +44,6 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .badge{display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
 .badge-compra{background:var(--blue-light);color:var(--blue);border:1px solid rgba(26,63,107,0.2);}
 .badge-alquiler{background:var(--green-light);color:var(--green);border:1px solid rgba(26,107,53,0.2);}
-
-/* FILTER BAR */
 .filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;box-shadow:var(--shadow);flex-wrap:wrap;}
 .filter-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.07em;white-space:nowrap;margin-right:4px;}
 .filter-btns{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
@@ -71,8 +52,6 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .fbtn.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent);}
 .fbtn .fbadge{font-size:10px;font-weight:700;background:var(--border2);color:var(--text2);padding:1px 6px;border-radius:10px;transition:all 0.18s;}
 .fbtn.active .fbadge{background:var(--accent);color:#fff;}
-
-/* TABLE */
 .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
 .table-header{padding:13px 18px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to right,#f8f5f0,#fff);}
 .table-title{font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;}
@@ -82,124 +61,103 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 table{width:100%;border-collapse:collapse;font-size:12px;}
 th{background:#f0ece4;color:var(--text2);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;transition:background 0.15s;}
 th:hover{background:#e8e0d4;color:var(--text);}
-th.sort-asc::after{content:' ↑';color:var(--accent);font-weight:900;}
-th.sort-desc::after{content:' ↓';color:var(--accent);font-weight:900;}
+th.sort-asc::after{content:" ↑";color:var(--accent);font-weight:900;}
+th.sort-desc::after{content:" ↓";color:var(--accent);font-weight:900;}
 th.no-sort{cursor:default;}
 th.no-sort:hover{background:#f0ece4;color:var(--text2);}
 td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;line-height:1.4;}
 tr:last-child td{border-bottom:none;}
 tr:hover td{background:#faf8f5;}
 tr.hidden-row{display:none;}
-
 .n{color:var(--text3);font-weight:700;font-size:12px;background:var(--surface2);border-radius:6px;padding:3px 7px;display:inline-block;min-width:26px;text-align:center;}
-
-/* DIRECCIÓN CELL */
 .prop-addr{font-weight:400;font-size:13px;color:var(--text);}
 .prop-meta{display:flex;align-items:center;gap:6px;margin-top:3px;}
 .prop-type{font-size:10px;font-weight:500;color:var(--text3);}
 .maps-inline{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;color:var(--blue);text-decoration:none;opacity:0.75;transition:opacity 0.15s;}
 .maps-inline:hover{opacity:1;}
-
 .price-val{font-weight:700;color:var(--text);white-space:nowrap;font-size:13px;}
 .price-sub{font-size:10px;color:var(--text3);margin-top:1px;}
 .ppm{font-size:12px;font-weight:600;color:var(--blue);}
-
 .st{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;}
 .st-ok{background:var(--green-light);color:var(--green);border:1px solid rgba(26,107,53,0.2);}
 .st-no{background:var(--red-light);color:var(--red);border:1px solid rgba(139,26,26,0.2);}
 .st-pend{background:var(--amber-light);color:var(--amber);border:1px solid rgba(138,85,0,0.2);}
 .st-desc{background:var(--gray-light);color:var(--gray);border:1px solid rgba(90,85,80,0.2);}
-
 .score{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;cursor:pointer;}
 .score-5{background:#e6f5ec;color:#1a6b35;border:1px solid rgba(26,107,53,0.2);}
 .score-4{background:#eef5e6;color:#3a6b1a;border:1px solid rgba(58,107,26,0.2);}
 .score-3{background:var(--amber-light);color:var(--amber);border:1px solid rgba(138,85,0,0.2);}
 .score-2{background:#fef0e0;color:#8a3300;border:1px solid rgba(138,51,0,0.2);}
 .score-1{background:var(--red-light);color:var(--red);border:1px solid rgba(139,26,26,0.2);}
-
 .txt-expand{cursor:pointer;}
 .txt-short{font-size:11px;color:var(--text2);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px dashed var(--border2);}
-
+.btn-ficha{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:5px 9px;border-radius:var(--radius-sm);border:1.5px solid rgba(200,82,42,0.35);background:var(--accent-light);color:var(--accent);cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.btn-ficha:hover{background:#f5d0bf;transform:translateY(-1px);}
 .btn-wsp{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:var(--radius-sm);border:1.5px solid rgba(26,107,53,0.3);background:var(--green-light);color:var(--green);cursor:pointer;text-decoration:none;transition:all 0.15s;white-space:nowrap;}
 .btn-wsp:hover{background:#c8e8d0;transform:translateY(-1px);}
 .btn-link{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:5px 10px;border-radius:var(--radius-sm);border:1.5px solid var(--border2);background:var(--surface);color:var(--text2);cursor:pointer;text-decoration:none;transition:all 0.15s;white-space:nowrap;}
 .btn-link:hover{border-color:var(--text);color:var(--text);transform:translateY(-1px);}
-
-
-
-
-
-.btn-ficha-inline:hover{background:#f5d5c5;transform:translateY(-1px);}
-
 .comentario-cell{min-width:160px;max-width:200px;}
 .comentario-input{width:100%;font-size:11px;font-family:inherit;color:var(--text2);background:transparent;border:none;border-bottom:1px dashed var(--border2);outline:none;resize:none;padding:2px 0;line-height:1.4;min-height:32px;cursor:text;}
 .comentario-input:focus{border-bottom:1px solid var(--accent);color:var(--text);background:var(--accent-light);}
 .comentario-input::placeholder{color:var(--text3);font-style:italic;}
-
-.btn-ficha{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:var(--radius-sm);border:1.5px solid rgba(26,63,107,0.3);background:var(--blue-light);color:var(--blue);cursor:pointer;text-decoration:none;transition:all 0.15s;white-space:nowrap;}
-.btn-ficha:hover{background:#c8d8f0;transform:translateY(-1px);}
-
-/* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:999;}
 .overlay.open{display:block;}
-.txt-modal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;max-width:420px;width:90%;box-shadow:var(--shadow-md);z-index:1000;font-size:13px;line-height:1.6;color:var(--text);}
+.txt-modal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;max-width:460px;width:92%;box-shadow:var(--shadow-md);z-index:1000;font-size:13px;line-height:1.6;color:var(--text);}
 .txt-modal.open{display:block;}
 .txt-modal-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);margin-bottom:10px;}
 .txt-modal-close{position:absolute;top:12px;right:16px;cursor:pointer;font-size:18px;color:var(--text3);}
-
 .empty-row td{text-align:center;color:var(--text3);font-style:italic;padding:40px;font-size:13px;}
 .footer{text-align:center;padding:24px;font-size:11px;color:var(--text3);border-top:1px solid var(--border);margin-top:32px;font-weight:500;}
 @media(max-width:768px){.header,.main{padding:16px;}.tabs-wrap{padding:0 16px;}.header-right{display:none;}}
 </style>
 </head>
 <body>
-
 <div class="overlay" id="overlay" onclick="closeModal()"></div>
 <div class="txt-modal" id="modal">
-  <div class="txt-modal-close" onclick="closeModal()">✕</div>
+  <div class="txt-modal-close" onclick="closeModal()">&#x2715;</div>
   <div class="txt-modal-title" id="modal-title"></div>
   <div id="modal-body"></div>
 </div>
 
 <div class="header">
   <div class="header-left">
-    <div class="header-icon">🏠</div>
+    <div class="header-icon">&#x1F3E0;</div>
     <div>
       <div class="header-brand">Base de Propiedades</div>
-      <div class="header-sub">Agencia Inmobiliaria · 4 clientes activos</div>
+      <div class="header-sub">Agencia Inmobiliaria &middot; 4 clientes activos</div>
     </div>
   </div>
   <div class="header-right">
-    <div class="header-stat"><div class="hs-num">13</div><div class="hs-lbl">Propiedades</div></div>
+    <div class="header-stat"><div class="hs-num">17</div><div class="hs-lbl">Propiedades</div></div>
     <div class="header-stat"><div class="hs-num">4</div><div class="hs-lbl">Clientes</div></div>
     <div class="header-stat"><div class="hs-num" id="hdate" style="font-size:12px;"></div><div class="hs-lbl">Actualizado</div></div>
-    <button class="btn-excel" onclick="downloadExcel()">⬇ Descargar Excel</button>
+    <button class="btn-excel" onclick="downloadExcel()">&#x2B07; Descargar Excel</button>
   </div>
 </div>
 
 <div class="tabs-wrap">
-  <div class="tab active" onclick="switchTab('surco',this)">🏘 Valle Hermoso · Sr. Guido <span class="count">9</span></div>
-  <div class="tab" onclick="switchTab('barranco',this)">🏢 Barranco · Airbnb Ops <span class="count">4</span></div>
-  <div class="tab" onclick="switchTab('victoria',this)">🏭 La Victoria · Almacén <span class="count">0</span></div>
-  <div class="tab urgent-tab" onclick="switchTab('miraflores',this)">⚠️ Miraflores/San Isidro · Gerbert &amp; Rocío <span class="count">4</span></div>
+  <div class="tab active" onclick="switchTab('surco',this)">&#x1F3D8; Valle Hermoso &middot; Sr. Guido <span class="count">9</span></div>
+  <div class="tab" onclick="switchTab('barranco',this)">&#x1F3E2; Barranco &middot; Airbnb Ops <span class="count">4</span></div>
+  <div class="tab" onclick="switchTab('victoria',this)">&#x1F3ED; La Victoria &middot; Almac&eacute;n <span class="count">0</span></div>
+  <div class="tab urgent-tab" onclick="switchTab('miraflores',this)">&#x26A0;&#xFE0F; Miraflores/San Isidro &middot; Gerbert &amp; Roc&iacute;o <span class="count">4</span></div>
 </div>
 
 <div class="main">
 
-<!-- ══ SURCO ══ -->
+<!-- SURCO -->
 <div id="panel-surco" class="panel active">
   <div class="client-card compra">
     <div class="client-card-header">
-      <span class="cc-label">Requerimiento</span>
-      <div class="cc-divider"></div>
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
       <span class="badge badge-compra">Compra</span>
       <div class="cc-chips">
-        <span class="chip">👤 Sr. Guido</span>
-        <span class="chip">📍 Valle Hermoso, Surco</span>
-        <span class="chip">💰 USD 250,000</span>
-        <span class="chip">📐 ~200 m²</span>
-        <span class="chip">🏠 Depto / Dúplex / Flat</span>
-        <span class="chip">🚗 Mín. 2 cocheras</span>
+        <span class="chip">&#x1F464; Sr. Guido</span>
+        <span class="chip">&#x1F4CD; Valle Hermoso, Surco</span>
+        <span class="chip">&#x1F4B0; USD 250,000</span>
+        <span class="chip">&#x1F4D0; ~200 m&sup2;</span>
+        <span class="chip">&#x1F3E0; Depto / D&uacute;plex / Flat</span>
+        <span class="chip">&#x1F697; M&iacute;n. 2 cocheras</span>
       </div>
     </div>
   </div>
@@ -207,40 +165,34 @@ tr.hidden-row{display:none;}
     <span class="filter-label">Filtrar por estado:</span>
     <div class="filter-btns">
       <span class="fbtn active" id="fb-surco-all" onclick="filterTable('surco','all',this)">Todos <span class="fbadge">9</span></span>
-      <span class="fbtn" id="fb-surco-ok" onclick="filterTable('surco','ok',this)">✅ Aceptó <span class="fbadge">4</span></span>
-      <span class="fbtn" id="fb-surco-no" onclick="filterTable('surco','no',this)">❌ No aceptó <span class="fbadge">2</span></span>
-      <span class="fbtn" id="fb-surco-pend" onclick="filterTable('surco','pend',this)">⏳ Por confirmar <span class="fbadge">3</span></span>
+      <span class="fbtn" id="fb-surco-ok" onclick="filterTable('surco','ok',this)">&#x2705; Acept&oacute; <span class="fbadge">4</span></span>
+      <span class="fbtn" id="fb-surco-no" onclick="filterTable('surco','no',this)">&#x274C; No acept&oacute; <span class="fbadge">2</span></span>
+      <span class="fbtn" id="fb-surco-pend" onclick="filterTable('surco','pend',this)">&#x23F3; Por confirmar <span class="fbadge">3</span></span>
     </div>
   </div>
   <div class="table-wrap">
-    <div class="table-header">
-      <span class="table-title">🏘 Propiedades encontradas</span>
-      <span class="active-filter-badge" id="afb-surco">Filtro activo</span>
-    </div>
+    <div class="table-header"><span class="table-title">Propiedades encontradas</span><span class="active-filter-badge" id="afb-surco">Filtro activo</span></div>
     <div class="table-scroll"><table id="table-surco"><thead><tr>
-      <th class="no-sort">Ficha</th>
-      <th class="no-sort">#</th>
-      <th class="no-sort">Ficha</th>
-      <th onclick="sortTable('surco',1)">Dirección</th>
-      <th onclick="sortTable('surco',1)">Distrito</th>
-      <th onclick="sortTable('surco',1)">Precio</th>
-      <th onclick="sortTable('surco',1)">Área m²</th>
-      <th onclick="sortTable('surco',1)">$/m²</th>
-      <th onclick="sortTable('surco',1)">Dorm.</th>
-      <th onclick="sortTable('surco',1)">Baños</th>
-      <th onclick="sortTable('surco',1)">Cocheras</th>
-      <th onclick="sortTable('surco',1)">Corredor</th>
-      <th onclick="sortTable('surco',1)">Estado</th>
-      <th onclick="sortTable('surco',1)">Comisión</th>
-      <th onclick="sortTable('surco',1)">Score</th>
-      <th class="no-sort">Motivo Score</th>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('surco',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('surco',3)">Distrito</th>
+      <th onclick="sortTable('surco',4)">Precio</th>
+      <th onclick="sortTable('surco',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('surco',6)">$/m&sup2;</th>
+      <th onclick="sortTable('surco',7)">Dorm.</th>
+      <th onclick="sortTable('surco',8)">Ba&ntilde;os</th>
+      <th onclick="sortTable('surco',9)">Cocheras</th>
+      <th onclick="sortTable('surco',10)">Corredor</th>
+      <th onclick="sortTable('surco',11)">Estado</th>
+      <th onclick="sortTable('surco',12)">Comisi&oacute;n</th>
+      <th onclick="sortTable('surco',13)">Score</th>
+      <th class="no-sort">Motivo</th>
       <th class="no-sort">Cond. Comerciales</th>
       <th class="no-sort">Aviso</th>
-      <th class="no-sort">WhatsApp</th>
       <th class="no-sort">Comentario</th>
+      <th class="no-sort">WhatsApp</th>
     </tr></thead>
-    <tbody id="tbody-surco">
-      <tr data-status="pend"><td><span class="n">1</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Calle La Esparceta</div><div class="prop-meta"><span class="prop-type">Flat + Aires</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+La+Esparceta+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></div></td><td>Stgo. de Surco</td><td data-val="250000"><div class="price-val">USD 250,000</div><div class="price-sub">≈ S/ 850,000</div></td><td data-val="397">397</td><td class="ppm" data-val="629">629</td><td data-val="3">3</td><td data-val="3">3</td><td data-val="2">2</td><td>Opción Uno Inmobiliaria</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Gran metraje con amplia terraza/aires. Precio/m² elevado. Comisión por confirmar.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Gran metraje con amplia terraza/aires. Precio/m² elevado dado el área.')"><span class="txt-short">Gran metraje, precio/m² alto</span></div></td><td>—</td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-flat-aires-en-valle-hermoso-149934285.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51966739026" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Ideal si buscas metraje generoso — el área libre convierte este espacio en algo difícil de igualar en Valle Hermoso.</textarea></td></tr>
+    <tbody id="tbody-surco"><tr data-status="pend"><td><span class="n">1</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Calle La Esparceta</div><div class="prop-meta"><span class="prop-type">Flat + Aires</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+La+Esparceta+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></div></td><td>Stgo. de Surco</td><td data-val="250000"><div class="price-val">USD 250,000</div><div class="price-sub">≈ S/ 850,000</div></td><td data-val="397">397</td><td class="ppm" data-val="629">629</td><td data-val="3">3</td><td data-val="3">3</td><td data-val="2">2</td><td>Opción Uno Inmobiliaria</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Gran metraje con amplia terraza/aires. Precio/m² elevado. Comisión por confirmar.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Gran metraje con amplia terraza/aires. Precio/m² elevado dado el área.')"><span class="txt-short">Gran metraje, precio/m² alto</span></div></td><td>—</td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-flat-aires-en-valle-hermoso-149934285.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51966739026" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Ideal si buscas metraje generoso — el área libre convierte este espacio en algo difícil de igualar en Valle Hermoso.</textarea></td></tr>
 
       <tr data-status="no"><td><span class="n">2</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Calle El Cascajal c.1</div><div class="prop-meta"><span class="prop-type">Dúplex</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+El+Cascajal+1+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></div></td><td>Stgo. de Surco</td><td data-val="250000"><div class="price-val">USD 250,000</div><div class="price-sub">≈ S/ 837,000</div></td><td data-val="260">260</td><td class="ppm" data-val="962">962</td><td data-val="4">4</td><td data-val="3">3</td><td data-val="2">2</td><td>Rafael Reyes Martel</td><td><span class="st st-no">❌ No aceptó</span></td><td>No comparte</td><td><span class="score score-2" onclick="openModal('Motivo Score','No comparte comisión. 2 terrazas + BBQ son puntos a favor pero descartado.')">🔴 2/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','No comparte comisión en ninguna modalidad.')"><span class="txt-short">No comparte comisión</span></div></td><td>—</td><td><a class="btn-link" href="https://www.adondevivir.com/propiedades/clasificado/veclapin-buscas-el-hogar-perfecto!-elcascajal-valle-hermoso-146023142.html" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51999401299" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Excelente distribución y doble terraza con BBQ. No comparte comisión, pero vale explorar directamente.</textarea></td></tr>
 
@@ -256,25 +208,24 @@ tr.hidden-row{display:none;}
 
       <tr data-status="pend"><td><span class="n">8</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Av. Reynaldo Vivanco</div><div class="prop-meta"><span class="prop-type">Departamento</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Av+Reynaldo+Vivanco+Valle+Hermoso+Santiago+de+Surco" target="_blank">📍 Maps</a></div></td><td>Stgo. de Surco</td><td data-val="0"><div class="price-val">Consultar</div></td><td data-val="204">204</td><td class="ppm" data-val="0">—</td><td data-val="3">3</td><td data-val="3">3</td><td data-val="2">2</td><td>Jorge Cabrera</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','5to piso con ascensor directo y 2 depósitos. Precio sin confirmar.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','5to piso con ascensor directo y 2 depósitos. Cocina equipada. Precio sin confirmar.')"><span class="txt-short">5to piso, precio por consultar</span></div></td><td>—</td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/1816354779081407/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51980961551" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">5to piso con ascensor directo y depósito — una combinación que suma valor real al precio de lista.</textarea></td></tr>
 
-      <tr data-status="ok"><td><span class="n">9</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Los Jazmines / Los Fresnos</div><div class="prop-meta"><span class="prop-type">Dúplex</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.app.goo.gl/PuHKzAnM8npzn9xy5" target="_blank">📍 Maps</a></div></td><td>Stgo. de Surco</td><td data-val="210000"><div class="price-val">USD 210,000</div></td><td data-val="134">134</td><td class="ppm" data-val="1567">1,567</td><td data-val="4">4</td><td data-val="3">3</td><td data-val="2">2</td><td>Kissy Casas</td><td><span class="st st-ok">✅ Aceptó</span></td><td>45% comisión</td><td><span class="score score-4" onclick="openModal('Motivo Score','Precio competitivo. Aires propios con terraza potencial. Dueño se muda en sept., se puede separar.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Dúplex con aires propios y terraza potencial. Precio competitivo. Dueño se muda sept., puede separarse.')"><span class="txt-short">Aires propios, precio competitivo</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Dueño se muda en septiembre. Se puede hacer separación antes de esa fecha.')"><span class="txt-short">Dueño muda sep., se puede separar</span></div></td><td><a class="btn-link" href="https://www.facebook.com/share/1CkSLYP1in/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51965991369" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">El único dúplex con aires propios del listado. Terraza potencial para BBQ o expansión. Precio competitivo.</textarea></td></tr>
-    </tbody></table></div>
+      <tr data-status="ok"><td><span class="n">9</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Los Jazmines / Los Fresnos</div><div class="prop-meta"><span class="prop-type">Dúplex</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.app.goo.gl/PuHKzAnM8npzn9xy5" target="_blank">📍 Maps</a></div></td><td>Stgo. de Surco</td><td data-val="210000"><div class="price-val">USD 210,000</div></td><td data-val="134">134</td><td class="ppm" data-val="1567">1,567</td><td data-val="4">4</td><td data-val="3">3</td><td data-val="2">2</td><td>Kissy Casas</td><td><span class="st st-ok">✅ Aceptó</span></td><td>45% comisión</td><td><span class="score score-4" onclick="openModal('Motivo Score','Precio competitivo. Aires propios con terraza potencial. Dueño se muda en sept., se puede separar.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Dúplex con aires propios y terraza potencial. Precio competitivo. Dueño se muda sept., puede separarse.')"><span class="txt-short">Aires propios, precio competitivo</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Dueño se muda en septiembre. Se puede hacer separación antes de esa fecha.')"><span class="txt-short">Dueño muda sep., se puede separar</span></div></td><td><a class="btn-link" href="https://www.facebook.com/share/1CkSLYP1in/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51965991369" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">El único dúplex con aires propios del listado. Terraza potencial para BBQ o expansión. Precio competitivo.</textarea></td></tr></tbody>
+    </table></div>
   </div>
 </div>
 
-<!-- ══ BARRANCO ══ -->
+<!-- BARRANCO -->
 <div id="panel-barranco" class="panel">
   <div class="client-card alquiler">
     <div class="client-card-header">
-      <span class="cc-label">Requerimiento</span>
-      <div class="cc-divider"></div>
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
       <span class="badge badge-alquiler">Alquiler</span>
       <div class="cc-chips">
-        <span class="chip">👤 Airbnb Ops Center</span>
-        <span class="chip">📍 Barranco (indispensable)</span>
-        <span class="chip">💰 Por definir</span>
-        <span class="chip">📐 80–250 m²</span>
-        <span class="chip">🏠 Casa o local comercial</span>
-        <span class="chip">🔧 Distribución flexible</span>
+        <span class="chip">&#x1F464; Airbnb Ops Center</span>
+        <span class="chip">&#x1F4CD; Barranco (indispensable)</span>
+        <span class="chip">&#x1F4B0; Por definir</span>
+        <span class="chip">&#x1F4D0; 80&ndash;250 m&sup2;</span>
+        <span class="chip">&#x1F3E0; Casa o local comercial</span>
+        <span class="chip">&#x1F527; Distribuci&oacute;n flexible</span>
       </div>
     </div>
   </div>
@@ -282,145 +233,131 @@ tr.hidden-row{display:none;}
     <span class="filter-label">Filtrar por estado:</span>
     <div class="filter-btns">
       <span class="fbtn active" id="fb-barranco-all" onclick="filterTable('barranco','all',this)">Todos <span class="fbadge">4</span></span>
-      <span class="fbtn" id="fb-barranco-ok" onclick="filterTable('barranco','ok',this)">✅ Aceptó <span class="fbadge">2</span></span>
-      <span class="fbtn" id="fb-barranco-no" onclick="filterTable('barranco','no',this)">❌ No aceptó <span class="fbadge">2</span></span>
+      <span class="fbtn" id="fb-barranco-ok" onclick="filterTable('barranco','ok',this)">&#x2705; Acept&oacute; <span class="fbadge">2</span></span>
+      <span class="fbtn" id="fb-barranco-no" onclick="filterTable('barranco','no',this)">&#x274C; No acept&oacute; <span class="fbadge">2</span></span>
     </div>
   </div>
   <div class="table-wrap">
-    <div class="table-header">
-      <span class="table-title">🏢 Propiedades encontradas</span>
-      <span class="active-filter-badge" id="afb-barranco">Filtro activo</span>
-    </div>
+    <div class="table-header"><span class="table-title">Propiedades encontradas</span><span class="active-filter-badge" id="afb-barranco">Filtro activo</span></div>
     <div class="table-scroll"><table id="table-barranco"><thead><tr>
-      <th class="no-sort">Ficha</th>
-      <th class="no-sort">#</th>
-      <th class="no-sort">Ficha</th>
-      <th onclick="sortTable('barranco',1)">Dirección</th>
-      <th onclick="sortTable('barranco',1)">Distrito</th>
-      <th onclick="sortTable('barranco',1)">Precio</th>
-      <th onclick="sortTable('barranco',1)">Área m²</th>
-      <th onclick="sortTable('barranco',1)">$/m²</th>
-      <th onclick="sortTable('barranco',1)">Baños</th>
-      <th onclick="sortTable('barranco',1)">Cocheras</th>
-      <th onclick="sortTable('barranco',1)">Corredor</th>
-      <th onclick="sortTable('barranco',1)">Estado</th>
-      <th onclick="sortTable('barranco',1)">Comisión</th>
-      <th onclick="sortTable('barranco',1)">Score</th>
-      <th class="no-sort">Motivo Score</th>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('barranco',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('barranco',3)">Distrito</th>
+      <th onclick="sortTable('barranco',4)">Precio</th>
+      <th onclick="sortTable('barranco',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('barranco',6)">$/m&sup2;</th>
+      <th onclick="sortTable('barranco',7)">Ba&ntilde;os</th>
+      <th onclick="sortTable('barranco',8)">Cocheras</th>
+      <th onclick="sortTable('barranco',9)">Corredor</th>
+      <th onclick="sortTable('barranco',10)">Estado</th>
+      <th onclick="sortTable('barranco',11)">Comisi&oacute;n</th>
+      <th onclick="sortTable('barranco',12)">Score</th>
+      <th class="no-sort">Motivo</th>
       <th class="no-sort">Cond. Comerciales</th>
       <th class="no-sort">Aviso</th>
-      <th class="no-sort">WhatsApp</th>
       <th class="no-sort">Comentario</th>
+      <th class="no-sort">WhatsApp</th>
     </tr></thead>
-    <tbody id="tbody-barranco">
-      <tr data-status="no"><td><span class="n">1</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Bolognesi 160</div><div class="prop-meta"><span class="prop-type">Local Comercial</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Bolognesi+160+Barranco" target="_blank">📍 Maps</a></div></td><td>Barranco</td><td data-val="1250"><div class="price-val">USD 1,250/mes</div><div class="price-sub">≈ S/ 4,540</div></td><td data-val="109">109</td><td class="ppm" data-val="11">11</td><td data-val="1.5">1.5</td><td>No indica</td><td>M.D.P. Severino (Hito Inm.)</td><td><span class="st st-no">❌ No aceptó</span></td><td>Solo en ventas</td><td><span class="score score-3" onclick="openModal('Motivo Score','Buena ubicación y área adecuada, pero no comparte comisión en alquileres.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Buena ubicación y área adecuada. No comparte comisión en alquileres, solo en ventas +USD 5,000.')"><span class="txt-short">Buena ub., sin comisión alquiler</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','No comparte comisión en alquileres. Solo en ventas con comisión de +USD 5,000.')"><span class="txt-short">Solo comparte en ventas</span></div></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149861715" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51988917843" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Casona patrimonial en ubicación premium de Barranco. Si el cliente tiene presupuesto, merece una visita.</textarea></td></tr>
+    <tbody id="tbody-barranco"><tr data-status="no"><td><span class="n">1</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Bolognesi 160</div><div class="prop-meta"><span class="prop-type">Local Comercial</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Bolognesi+160+Barranco" target="_blank">📍 Maps</a></div></td><td>Barranco</td><td data-val="1250"><div class="price-val">USD 1,250/mes</div><div class="price-sub">≈ S/ 4,540</div></td><td data-val="109">109</td><td class="ppm" data-val="11">11</td><td data-val="1.5">1.5</td><td>No indica</td><td>M.D.P. Severino (Hito Inm.)</td><td><span class="st st-no">❌ No aceptó</span></td><td>Solo en ventas</td><td><span class="score score-3" onclick="openModal('Motivo Score','Buena ubicación y área adecuada, pero no comparte comisión en alquileres.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Buena ubicación y área adecuada. No comparte comisión en alquileres, solo en ventas +USD 5,000.')"><span class="txt-short">Buena ub., sin comisión alquiler</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','No comparte comisión en alquileres. Solo en ventas con comisión de +USD 5,000.')"><span class="txt-short">Solo comparte en ventas</span></div></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149861715" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51988917843" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Casona patrimonial en ubicación premium de Barranco. Si el cliente tiene presupuesto, merece una visita.</textarea></td></tr>
 
       <tr data-status="ok"><td><span class="n">2</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Jr. García y García</div><div class="prop-meta"><span class="prop-type">Local Comercial</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Jiron+Garcia+y+Garcia+Barranco" target="_blank">📍 Maps</a></div></td><td>Barranco</td><td data-val="730"><div class="price-val">USD 730/mes</div><div class="price-sub">≈ S/ 2,500</div></td><td data-val="90">90</td><td class="ppm" data-val="8">8</td><td data-val="2">2</td><td>No indica</td><td>Serv. Inm. Barreda</td><td><span class="st st-ok">✅ Aceptó</span></td><td>–5% por IR</td><td><span class="score score-3" onclick="openModal('Motivo Score','Excelente precio/m². Sin estacionamiento confirmado. Piso 3 puede ser inconveniente.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Excelente precio/m² del listado. Piso 3 con control de accesos. Estacionamiento no confirmado.')"><span class="txt-short">Mejor precio/m², sin estac.</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Comparte comisión con descuento del 5% por impuesto a la renta.')"><span class="txt-short">Comparte menos 5% por IR</span></div></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-149703945" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51941104437" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">El precio/m² más bajo de Barranco con comisión confirmada — ideal para arrancar sin comprometer el flujo de caja.</textarea></td></tr>
 
       <tr data-status="no"><td><span class="n">3</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Cerca Parque Municipal</div><div class="prop-meta"><span class="prop-type">Casa</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Parque+Municipal+Barranco" target="_blank">📍 Maps</a></div></td><td>Barranco</td><td data-val="1300"><div class="price-val">USD 1,300/mes</div><div class="price-sub">≈ S/ 4,400</div></td><td data-val="126">126</td><td class="ppm" data-val="10">10</td><td data-val="2">2</td><td>1 cochera</td><td>EXP Peru SAC</td><td><span class="st st-no">❌ No aceptó</span></td><td>Ya compartía</td><td><span class="score score-5" onclick="openModal('Motivo Score','Casa independiente con cochera, patio y lavandería. Ideal para Airbnb Ops. No aceptó porque ya compartía.')">🟢 5/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Casa independiente con cochera, patio y lavandería. La mejor opción para Airbnb Ops. No aceptó porque ya compartía.')"><span class="txt-short">Mejor match, no aceptó</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Ya comparte con otros corredores, no acepta nuevos.')"><span class="txt-short">Ya compartía, no acepta nuevos</span></div></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alclcain-alquiler-de-casa-en-barranco-lima-3-dormitorios-149086231" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51920500176" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Casa independiente con cochera y patio: el espacio perfecto para un Airbnb Ops Center. Lamentablemente ya comprometida.</textarea></td></tr>
 
-      <tr data-status="ok"><td><span class="n">4</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Av. El Sol Este 599</div><div class="prop-meta"><span class="prop-type">Local Comercial</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Av+El+Sol+Este+599+Barranco" target="_blank">📍 Maps</a></div></td><td>Barranco</td><td data-val="3800"><div class="price-val">USD 3,800/mes+IGV</div><div class="price-sub">≈ S/ 13,167</div></td><td data-val="109">109</td><td class="ppm" data-val="35">35</td><td data-val="1">1</td><td>Exterior</td><td>SAITO Serv. Inm.</td><td><span class="st st-desc">⬜ Descartado</span></td><td>50/50 — 1 mes</td><td><span class="score score-3" onclick="openModal('Motivo Score','Ubicación ideal en Av. El Sol pero precio muy elevado para el presupuesto del cliente.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Ubicación exacta requerida (Av. El Sol). Precio muy elevado. Descartado por presupuesto.')"><span class="txt-short">Ubicación ideal, precio alto</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Contrato mínimo 36 meses. Penalidad mínima 12 rentas por salida anticipada. Requiere evaluación financiera, RUC, vigencia de poder y registros tributarios. Estacionamiento exterior disponible.')"><span class="txt-short">Contrato 36 meses, penalidad 12 rentas</span></div></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-150060392" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51934532194" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">La mejor visibilidad comercial de Barranco. Con 60 días de gracia y ubicación estratégica — negociable si hay músculo financiero.</textarea></td></tr>
-    </tbody></table></div>
+      <tr data-status="ok"><td><span class="n">4</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Av. El Sol Este 599</div><div class="prop-meta"><span class="prop-type">Local Comercial</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Av+El+Sol+Este+599+Barranco" target="_blank">📍 Maps</a></div></td><td>Barranco</td><td data-val="3800"><div class="price-val">USD 3,800/mes+IGV</div><div class="price-sub">≈ S/ 13,167</div></td><td data-val="109">109</td><td class="ppm" data-val="35">35</td><td data-val="1">1</td><td>Exterior</td><td>SAITO Serv. Inm.</td><td><span class="st st-desc">⬜ Descartado</span></td><td>50/50 — 1 mes</td><td><span class="score score-3" onclick="openModal('Motivo Score','Ubicación ideal en Av. El Sol pero precio muy elevado para el presupuesto del cliente.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Ubicación exacta requerida (Av. El Sol). Precio muy elevado. Descartado por presupuesto.')"><span class="txt-short">Ubicación ideal, precio alto</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Contrato mínimo 36 meses. Penalidad mínima 12 rentas por salida anticipada. Requiere evaluación financiera, RUC, vigencia de poder y registros tributarios. Estacionamiento exterior disponible.')"><span class="txt-short">Contrato 36 meses, penalidad 12 rentas</span></div></td><td><a class="btn-link" href="https://urbania.pe/inmueble/clasificado/alcllcin-alquiler-de-local-comercial-en-barranco-lima-150060392" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://wa.me/51934532194" target="_blank">💬 Abrir</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">La mejor visibilidad comercial de Barranco. Con 60 días de gracia y ubicación estratégica — negociable si hay músculo financiero.</textarea></td></tr></tbody>
+    </table></div>
   </div>
 </div>
 
-<!-- ══ LA VICTORIA ══ -->
+<!-- LA VICTORIA -->
 <div id="panel-victoria" class="panel">
   <div class="client-card alquiler">
     <div class="client-card-header">
-      <span class="cc-label">Requerimiento</span>
-      <div class="cc-divider"></div>
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
       <span class="badge badge-alquiler">Alquiler</span>
       <div class="cc-chips">
-        <span class="chip">👤 Sadita (cliente directo)</span>
-        <span class="chip">📍 La Victoria</span>
-        <span class="chip">💰 USD 7–10/m²</span>
-        <span class="chip">📐 Mín. 100 m²</span>
-        <span class="chip">🏭 Almacén materiales y repuestos</span>
+        <span class="chip">&#x1F464; Sadita (cliente directo)</span>
+        <span class="chip">&#x1F4CD; La Victoria</span>
+        <span class="chip">&#x1F4B0; USD 7&ndash;10/m&sup2;</span>
+        <span class="chip">&#x1F4D0; M&iacute;n. 100 m&sup2;</span>
+        <span class="chip">&#x1F3ED; Almac&eacute;n materiales y repuestos</span>
       </div>
     </div>
   </div>
   <div class="table-wrap">
-    <div class="table-header"><span class="table-title">🏭 Propiedades encontradas</span></div>
+    <div class="table-header"><span class="table-title">Propiedades encontradas</span></div>
     <div class="table-scroll"><table id="table-victoria"><thead><tr>
-      <th class="no-sort">Ficha</th>
-      <th class="no-sort">#</th>
-      <th class="no-sort">Ficha</th>
-      <th onclick="sortTable('victoria',1)">Dirección</th>
-      <th onclick="sortTable('victoria',1)">Distrito</th>
-      <th onclick="sortTable('victoria',1)">Precio</th>
-      <th onclick="sortTable('victoria',1)">Área m²</th>
-      <th onclick="sortTable('victoria',1)">$/m²</th>
-      <th onclick="sortTable('victoria',1)">Baños</th>
-      <th onclick="sortTable('victoria',1)">Cocheras</th>
-      <th onclick="sortTable('victoria',1)">Corredor</th>
-      <th onclick="sortTable('victoria',1)">Estado</th>
-      <th onclick="sortTable('victoria',1)">Comisión</th>
-      <th onclick="sortTable('victoria',1)">Score</th>
-      <th class="no-sort">Motivo Score</th>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('victoria',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('victoria',3)">Distrito</th>
+      <th onclick="sortTable('victoria',4)">Precio</th>
+      <th onclick="sortTable('victoria',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('victoria',6)">$/m&sup2;</th>
+      <th onclick="sortTable('victoria',7)">Ba&ntilde;os</th>
+      <th onclick="sortTable('victoria',8)">Cocheras</th>
+      <th onclick="sortTable('victoria',9)">Corredor</th>
+      <th onclick="sortTable('victoria',10)">Estado</th>
+      <th onclick="sortTable('victoria',11)">Comisi&oacute;n</th>
+      <th onclick="sortTable('victoria',12)">Score</th>
+      <th class="no-sort">Motivo</th>
       <th class="no-sort">Cond. Comerciales</th>
       <th class="no-sort">Aviso</th>
-      <th class="no-sort">WhatsApp</th>
       <th class="no-sort">Comentario</th>
+      <th class="no-sort">WhatsApp</th>
     </tr></thead>
     <tbody id="tbody-victoria"><tr class="empty-row"><td colspan="17">Sin propiedades aún — manda el primer link</td></tr></tbody>
     </table></div>
   </div>
 </div>
 
-<!-- ══ MIRAFLORES ══ -->
+<!-- MIRAFLORES -->
 <div id="panel-miraflores" class="panel">
   <div class="client-card urgent">
     <div class="client-card-header">
-      <span class="cc-label">Requerimiento</span>
-      <div class="cc-divider"></div>
-      <span class="badge" style="background:var(--urgent-light);color:var(--urgent);border:1px solid rgba(139,26,26,0.2);">⚠ Urgente</span>
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
+      <span class="badge" style="background:var(--urgent-light);color:var(--urgent);border:1px solid rgba(139,26,26,0.2);">&#x26A0; Urgente</span>
       <div class="cc-chips">
-        <span class="chip">👤 Gerbert y Rocío</span>
-        <span class="chip">📍 Miraflores o San Isidro</span>
-        <span class="chip">💰 USD 190,000</span>
-        <span class="chip">🏠 Departamento · 2 o 3 dorms</span>
-        <span class="chip">🏦 Crédito hipotecario aprobado</span>
-        <span class="chip urgent-chip">📅 Antes del 25 de junio</span>
+        <span class="chip">&#x1F464; Gerbert y Roc&iacute;o</span>
+        <span class="chip">&#x1F4CD; Miraflores o San Isidro</span>
+        <span class="chip">&#x1F4B0; USD 190,000</span>
+        <span class="chip">&#x1F3E0; Departamento &middot; 2 o 3 dorms</span>
+        <span class="chip">&#x1F3E6; Cr&eacute;dito hipotecario aprobado</span>
+        <span class="chip urgent-chip">&#x1F4C5; Antes del 25 de junio</span>
       </div>
     </div>
   </div>
   <div class="table-wrap">
-    <div class="table-header"><span class="table-title">🏙 Propiedades encontradas</span></div>
+    <div class="table-header"><span class="table-title">Propiedades encontradas</span></div>
     <div class="table-scroll"><table id="table-miraflores"><thead><tr>
-      <th class="no-sort">Ficha</th>
-      <th class="no-sort">#</th>
-      <th class="no-sort">Ficha</th>
-      <th onclick="sortTable('miraflores',1)">Dirección</th>
-      <th onclick="sortTable('miraflores',1)">Distrito</th>
-      <th onclick="sortTable('miraflores',1)">Precio</th>
-      <th onclick="sortTable('miraflores',1)">Área m²</th>
-      <th onclick="sortTable('miraflores',1)">$/m²</th>
-      <th onclick="sortTable('miraflores',1)">Dorm.</th>
-      <th onclick="sortTable('miraflores',1)">Baños</th>
-      <th onclick="sortTable('miraflores',1)">Cocheras</th>
-      <th onclick="sortTable('miraflores',1)">Corredor</th>
-      <th onclick="sortTable('miraflores',1)">Estado</th>
-      <th onclick="sortTable('miraflores',1)">Comisión</th>
-      <th onclick="sortTable('miraflores',1)">Score</th>
-      <th class="no-sort">Motivo Score</th>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('miraflores',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('miraflores',3)">Distrito</th>
+      <th onclick="sortTable('miraflores',4)">Precio</th>
+      <th onclick="sortTable('miraflores',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('miraflores',6)">$/m&sup2;</th>
+      <th onclick="sortTable('miraflores',7)">Dorm.</th>
+      <th onclick="sortTable('miraflores',8)">Ba&ntilde;os</th>
+      <th onclick="sortTable('miraflores',9)">Cocheras</th>
+      <th onclick="sortTable('miraflores',10)">Corredor</th>
+      <th onclick="sortTable('miraflores',11)">Estado</th>
+      <th onclick="sortTable('miraflores',12)">Comisi&oacute;n</th>
+      <th onclick="sortTable('miraflores',13)">Score</th>
+      <th class="no-sort">Motivo</th>
       <th class="no-sort">Cond. Comerciales</th>
       <th class="no-sort">Aviso</th>
-      <th class="no-sort">WhatsApp</th>
       <th class="no-sort">Comentario</th>
+      <th class="no-sort">WhatsApp</th>
     </tr></thead>
-    <tbody id="tbody-miraflores">
-      <tr data-status="pend"><td><span class="n">2</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Paseo de la República / Angamos</div><div class="prop-meta"><span class="prop-type">Departamento</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Paseo+de+la+Republica+Angamos+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="156000"><div class="price-val">USD 156,000</div></td><td data-val="72">72</td><td class="ppm" data-val="2167">2,167</td><td data-val="2">2</td><td data-val="2">2</td><td data-val="0">No indica</td><td>Yajaira Fretel</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Miraflores puro, a una cuadra de Angamos. Precio con margen respecto al presupuesto. Sin cochera confirmada. Área de 72m² es pequeña para el cliente. Pendiente confirmar hipotecario y comisión.')">🟡 3.5/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro, precio con margen. Sin cochera confirmada. Área 72m² reducida. Pendiente comisión e hipotecario.')"><span class="txt-short">Miraflores puro, área pequeña</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','USD 156,000. Opción de adquirir amoblado. Sin cochera mencionada. Edificio con seguridad 24/7, parque interno, salón lounge y zona BBQ. Contacto solo por Facebook.')"><span class="txt-short">USD 156k, opción amoblado, sin cochera</span></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/25472100139154531/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://www.facebook.com/marketplace/item/25472100139154531/" target="_blank">💬 Facebook</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Departamento en Miraflores puro con 2 balcones y excelente iluminación. El precio más competitivo del distrito para este metraje.</textarea></td></tr>
+    <tbody id="tbody-miraflores"><tr data-status="pend"><td><span class="n">2</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Paseo de la República / Angamos</div><div class="prop-meta"><span class="prop-type">Departamento</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Paseo+de+la+Republica+Angamos+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="156000"><div class="price-val">USD 156,000</div></td><td data-val="72">72</td><td class="ppm" data-val="2167">2,167</td><td data-val="2">2</td><td data-val="2">2</td><td data-val="0">No indica</td><td>Yajaira Fretel</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Miraflores puro, a una cuadra de Angamos. Precio con margen respecto al presupuesto. Sin cochera confirmada. Área de 72m² es pequeña para el cliente. Pendiente confirmar hipotecario y comisión.')">🟡 3.5/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro, precio con margen. Sin cochera confirmada. Área 72m² reducida. Pendiente comisión e hipotecario.')"><span class="txt-short">Miraflores puro, área pequeña</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','USD 156,000. Opción de adquirir amoblado. Sin cochera mencionada. Edificio con seguridad 24/7, parque interno, salón lounge y zona BBQ. Contacto solo por Facebook.')"><span class="txt-short">USD 156k, opción amoblado, sin cochera</span></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/25472100139154531/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://www.facebook.com/marketplace/item/25472100139154531/" target="_blank">💬 Facebook</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Departamento en Miraflores puro con 2 balcones y excelente iluminación. El precio más competitivo del distrito para este metraje.</textarea></td></tr>
       <tr data-status="pend"><td><span class="n">1</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Sergio Bernales, Surquillo (límite Miraflores)</div><div class="prop-meta"><span class="prop-type">Dúplex</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Sergio+Bernales+Surquillo+Lima" target="_blank">📍 Maps</a></div></td><td>Surquillo / Miraflores</td><td data-val="190000"><div class="price-val">USD 190,000</div><div class="price-sub">S/ 638,000 (conversable)</div></td><td data-val="104">104</td><td class="ppm" data-val="1827">1,827</td><td data-val="2">2 + 1 adicional</td><td data-val="2">2</td><td data-val="1">1 (sótano)</td><td>Erika Canela (Grupo Proyecta)</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Precio exacto al presupuesto del cliente (USD 190,000 conversable). Dúplex con áreas comunes completas: piscina, gimnasio, parrillas. Zona limítrofe con Miraflores pero técnicamente Surquillo. 15 años de antigüedad. Pendiente confirmar si acepta crédito hipotecario.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Precio exacto al presupuesto. Dúplex con piscina, gimnasio y parrillas. Zona limítrofe Miraflores pero técnicamente Surquillo. 15 años antigüedad.')"><span class="txt-short">Precio exacto, zona limítrofe Miraflores</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Precio S/638,000 / USD 190,000 algo conversable. Mantenimiento S/310. Incluye 1 estacionamiento en sótano y depósito. Antigüedad 15 años. Contacto solo por Facebook Marketplace.')"><span class="txt-short">USD 190k conversable, mant. S/310</span></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/1389736702525189/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://www.facebook.com/marketplace/item/1389736702525189/" target="_blank">💬 Facebook</a></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Dúplex en el límite exacto con Miraflores, al presupuesto del cliente. Precio conversable y zonas comunes completas.</textarea></td></tr>
           <tr data-status="pend"><td><span class="n">3</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Calle Berlín, Miraflores</div><div class="prop-meta"><span class="prop-type">Departamento</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+Berlin+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="174000"><div class="price-val">USD 174,000</div><div class="price-sub">Remate por viaje</div></td><td data-val="0">—</td><td class="ppm" data-val="0">—</td><td data-val="2">2</td><td data-val="2">2</td><td data-val="1">1</td><td>Jorge Olivos</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-4" onclick="openModal('Motivo Score','Miraflores puro a 3 cuadras del Parque Kennedy. Full amoblado de lujo. Precio por debajo del presupuesto del cliente con margen para negociar.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro a 3 cuadras del Parque Kennedy. Full amoblado de lujo incluido. Remate por viaje — vendedor motivado.')"><span class="txt-short">Miraflores puro, amoblado lujo, remate</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Remate por viaje. Full amoblado y decorado por diseñador incluido. Áreas comunes: piscina, gimnasio, zona parrilla, sala bar. Contacto solo por Facebook.')"><span class="txt-short">Remate por viaje, full amoblado incluido</span></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/682467844961643/" target="_blank">🔗 Ver</a></td><td><a class="btn-wsp" href="https://www.facebook.com/marketplace/item/682467844961643/" target="_blank">💬 Facebook</a></td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">A 3 cuadras del Parque Kennedy, full amoblado de lujo incluido y vendedor motivado por viaje — difícil encontrar esta combinación en Miraflores a este precio.</textarea></td></tr>
-      <tr data-status="pend"><td><span class="n">4</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Calle Acacias, Miraflores</div><div class="prop-meta"><span class="prop-type">Departamento · Piso 10</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+Acacias+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="179000"><div class="price-val">USD 179,000</div><div class="price-sub">Mant. S/ 400</div></td><td data-val="93">93</td><td class="ppm" data-val="1925">1,925</td><td data-val="2">2</td><td data-val="3">3 (2 + servicio)</td><td data-val="1">1 techada</td><td>Pilar Herrera Salazar</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-4" onclick="openModal('Motivo Score','Miraflores puro en Calle Acacias, piso 10 con balcón y vista a Paseo de la República. Cochera techada incluida. Precio dentro del presupuesto del cliente.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro, piso 10 con balcón y vista a Paseo de la República. Cochera techada incluida. 15 años de antigüedad.')"><span class="txt-short">Miraflores puro, piso 10, balcón vista</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Precio USD 179,000. Mantenimiento S/400. 15 años de antigüedad. 1 estacionamiento techado incluido. Contacto solo por Facebook.')"><span class="txt-short">USD 179k, mant. S/400, 15 años antigüedad</span></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/26808668342106159/" target="_blank">🔗 Ver</a></td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Piso 10 con balcón y vista directa a Paseo de la República en Miraflores puro — el tipo de ubicación y vista que normalmente está fuera de este presupuesto.</textarea></td><td><a class="btn-wsp" href="https://www.facebook.com/marketplace/item/26808668342106159/" target="_blank">💬 Facebook</a></td></tr>
-</tbody>
+      <tr data-status="pend"><td><span class="n">4</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha</button></td><td><div class="prop-addr">Calle Acacias, Miraflores</div><div class="prop-meta"><span class="prop-type">Departamento · Piso 10</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+Acacias+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="179000"><div class="price-val">USD 179,000</div><div class="price-sub">Mant. S/ 400</div></td><td data-val="93">93</td><td class="ppm" data-val="1925">1,925</td><td data-val="2">2</td><td data-val="3">3 (2 + servicio)</td><td data-val="1">1 techada</td><td>Pilar Herrera Salazar</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-4" onclick="openModal('Motivo Score','Miraflores puro en Calle Acacias, piso 10 con balcón y vista a Paseo de la República. Cochera techada incluida. Precio dentro del presupuesto del cliente.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro, piso 10 con balcón y vista a Paseo de la República. Cochera techada incluida. 15 años de antigüedad.')"><span class="txt-short">Miraflores puro, piso 10, balcón vista</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Precio USD 179,000. Mantenimiento S/400. 15 años de antigüedad. 1 estacionamiento techado incluido. Contacto solo por Facebook.')"><span class="txt-short">USD 179k, mant. S/400, 15 años antigüedad</span></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/26808668342106159/" target="_blank">🔗 Ver</a></td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Piso 10 con balcón y vista directa a Paseo de la República en Miraflores puro — el tipo de ubicación y vista que normalmente está fuera de este presupuesto.</textarea></td><td><a class="btn-wsp" href="https://www.facebook.com/marketplace/item/26808668342106159/" target="_blank">💬 Facebook</a></td></tr></tbody>
     </table></div>
   </div>
 </div>
 
 </div>
-<div class="footer">🏠 Base de Propiedades · Agencia Inmobiliaria · Actualizado: <span id="fdate"></span></div>
+<div class="footer">&#x1F3E0; Base de Propiedades &middot; Agencia Inmobiliaria &middot; Actualizado: <span id="fdate"></span></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
@@ -435,229 +372,160 @@ function closeModal() {
   document.getElementById('overlay').classList.remove('open');
 }
 function switchTab(t, el) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById('panel-' + t).classList.add('active');
   el.classList.add('active');
 }
 function filterTable(tab, status, btn) {
-  const tbody = document.getElementById('tbody-' + tab);
+  var tbody = document.getElementById('tbody-' + tab);
   if (!tbody) return;
-  tbody.querySelectorAll('tr[data-status]').forEach(r => {
+  tbody.querySelectorAll('tr[data-status]').forEach(function(r) {
     r.classList.toggle('hidden-row', status !== 'all' && r.dataset.status !== status);
   });
-  document.querySelectorAll('[id^="fb-' + tab + '"]').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('[id^="fb-' + tab + '"]').forEach(function(b) { b.classList.remove('active'); });
   if (btn) btn.classList.add('active');
-  const afb = document.getElementById('afb-' + tab);
+  var afb = document.getElementById('afb-' + tab);
   if (afb) afb.classList.toggle('visible', status !== 'all');
 }
-let sortState = {};
+var sortState = {};
 function sortTable(tab, colIdx) {
-  const table = document.getElementById('table-' + tab);
-  const tbody = document.getElementById('tbody-' + tab);
+  var table = document.getElementById('table-' + tab);
+  var tbody = document.getElementById('tbody-' + tab);
   if (!tbody) return;
-  const key = tab + '-' + colIdx;
-  const asc = sortState[key] !== 'asc';
+  var key = tab + '-' + colIdx;
+  var asc = sortState[key] !== 'asc';
   sortState[key] = asc ? 'asc' : 'desc';
-  table.querySelectorAll('th').forEach((th, i) => {
+  table.querySelectorAll('th').forEach(function(th, i) {
     th.classList.remove('sort-asc','sort-desc');
     if (i === colIdx) th.classList.add(asc ? 'sort-asc' : 'sort-desc');
   });
-  const rows = Array.from(tbody.querySelectorAll('tr[data-status]'));
-  rows.sort((a, b) => {
-    const ac = a.cells[colIdx], bc = b.cells[colIdx];
+  var rows = Array.from(tbody.querySelectorAll('tr[data-status]'));
+  rows.sort(function(a, b) {
+    var ac = a.cells[colIdx], bc = b.cells[colIdx];
     if (!ac || !bc) return 0;
-    const an = ac.dataset.val !== undefined ? parseFloat(ac.dataset.val) : NaN;
-    const bn = bc.dataset.val !== undefined ? parseFloat(bc.dataset.val) : NaN;
+    var an = ac.dataset.val !== undefined ? parseFloat(ac.dataset.val) : NaN;
+    var bn = bc.dataset.val !== undefined ? parseFloat(bc.dataset.val) : NaN;
     if (!isNaN(an) && !isNaN(bn)) return asc ? an - bn : bn - an;
     return asc ? ac.innerText.trim().localeCompare(bc.innerText.trim()) : bc.innerText.trim().localeCompare(ac.innerText.trim());
   });
-  rows.forEach(r => tbody.appendChild(r));
+  rows.forEach(function(r) { tbody.appendChild(r); });
 }
-
 function tableToArray(tableId) {
-  const table = document.getElementById(tableId);
+  var table = document.getElementById(tableId);
   if (!table) return [];
-  const rows = [];
-  // Headers — skip no-sort cols that are buttons (Aviso, WhatsApp)
-  const headers = [];
-  table.querySelectorAll('thead th').forEach(th => {
-    const t = th.innerText.replace(/[ ↑↓]/g,'').trim();
-    headers.push(t);
-  });
+  var rows = [];
+  var headers = [];
+  table.querySelectorAll('thead th').forEach(function(th) { headers.push(th.innerText.replace(/[ \u2191\u2193]/g,'').trim()); });
   rows.push(headers);
-  table.querySelectorAll('tbody tr[data-status]').forEach(tr => {
-    const row = [];
-    tr.querySelectorAll('td').forEach((td, i) => {
-      // For Aviso and WhatsApp columns, get href
-      const a = td.querySelector('a');
-      if (a && (a.classList.contains('btn-link') || a.classList.contains('btn-wsp'))) {
-        row.push(a.href || '');
-      } else {
-        // Clean text: get innerText, strip emojis mostly, trim
-        row.push(td.innerText.replace(/\n/g,' ').trim());
-      }
+  table.querySelectorAll('tbody tr[data-status]').forEach(function(tr) {
+    var row = [];
+    tr.querySelectorAll('td').forEach(function(td) {
+      var a = td.querySelector('a.btn-link, a.btn-wsp');
+      if (a) { row.push(a.href || ''); }
+      else { row.push(td.innerText.replace(/\n/g,' ').trim()); }
     });
     rows.push(row);
   });
   return rows;
 }
-
 function downloadExcel() {
-  const wb = XLSX.utils.book_new();
-  const sheets = [
-    { id: 'table-surco',      name: 'Valle Hermoso - Sr. Guido' },
-    { id: 'table-barranco',   name: 'Barranco - Airbnb Ops' },
-    { id: 'table-victoria',   name: 'La Victoria - Almacen' },
-    { id: 'table-miraflores', name: 'Miraflores - Gerbert y Rocio' }
+  var wb = XLSX.utils.book_new();
+  var sheets = [
+    {id:'table-surco', name:'Valle Hermoso - Sr. Guido'},
+    {id:'table-barranco', name:'Barranco - Airbnb Ops'},
+    {id:'table-victoria', name:'La Victoria - Almacen'},
+    {id:'table-miraflores', name:'Miraflores - Gerbert y Rocio'}
   ];
-  sheets.forEach(s => {
-    const data = tableToArray(s.id);
+  sheets.forEach(function(s) {
+    var data = tableToArray(s.id);
+    var ws = data.length > 1 ? XLSX.utils.aoa_to_sheet(data) : XLSX.utils.aoa_to_sheet([['Sin propiedades aun']]);
     if (data.length > 1) {
-      const ws = XLSX.utils.aoa_to_sheet(data);
-      // Auto column width
-      const colWidths = data[0].map((_, ci) => ({
-        wch: Math.min(40, Math.max(10, ...data.map(r => (r[ci] || '').toString().length)))
-      }));
-      ws['!cols'] = colWidths;
-      XLSX.utils.book_append_sheet(wb, ws, s.name);
-    } else {
-      // Empty sheet
-      const ws = XLSX.utils.aoa_to_sheet([['Sin propiedades aún']]);
-      XLSX.utils.book_append_sheet(wb, ws, s.name);
+      ws['!cols'] = data[0].map(function(_, ci) {
+        return {wch: Math.min(40, Math.max(10, Math.max.apply(null, data.map(function(r) { return (r[ci]||'').toString().length; }))))};
+      });
     }
+    XLSX.utils.book_append_sheet(wb, ws, s.name);
   });
-  const fecha = new Date().toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric'}).replace(/\//g,'-');
+  var fecha = new Date().toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric'}).replace(/\//g,'-');
   XLSX.writeFile(wb, 'Propiedades_Agencia_' + fecha + '.xlsx');
 }
-
-
-
-function fichaFromRow(btn) {
-  const tr = btn.closest('tr');
-  const cells = tr.querySelectorAll('td');
-  // Column order: # | Ficha | Dirección | Distrito | Precio | Área | $/m² | [Dorm|] | Baños | Cocheras | Corredor | Estado | Comisión | Score | Motivo | Cond | Aviso | Comentario | WhatsApp
-  // idx:          0    1        2           3         4        5      6      ...
-
-  const getPlain = (i) => {
-    if (!cells[i]) return '—';
-    // Get innerText but skip button/link text
-    const clone = cells[i].cloneNode(true);
-    clone.querySelectorAll('button,a.btn-link,a.btn-wsp,a.btn-maps,a.maps-inline,.btn-ficha').forEach(el => el.remove());
-    return clone.innerText.replace(/\s+/g,' ').trim() || '—';
-  };
-
-  const n = getPlain(0);
-  // col 1 = ficha button, skip
-  // col 2 = direccion
-  const addrEl = cells[2];
-  const addr = addrEl ? (addrEl.querySelector('.prop-addr')?.innerText.trim() || '—') : '—';
-  const tipo = addrEl ? (addrEl.querySelector('.prop-type')?.innerText.trim() || '') : '';
-  const linkEl = cells[2] ? cells[2].querySelector('a.maps-inline') : null;
-
-  const distrito = getPlain(3);
-  const precio = getPlain(4).replace(/\s+/g,' ');
-  const area = cells[5] ? (cells[5].dataset.val || getPlain(5)) : '—';
-  const ppm = cells[6] ? (cells[6].dataset.val || getPlain(6)) : '—';
-
-  // Detect extra cols (dorm/baños/cocheras or just baños/cocheras)
-  // Find Estado cell by looking for .st class
-  let estadoIdx = -1;
-  for (let i = 7; i < cells.length; i++) {
+function fichaFromRow(tr) {
+  var cells = tr.querySelectorAll('td');
+  function getPlain(i) {
+    if (!cells[i]) return '-';
+    var clone = cells[i].cloneNode(true);
+    clone.querySelectorAll('button,a,.btn-ficha,.maps-inline').forEach(function(el) { el.remove(); });
+    return clone.innerText.replace(/\s+/g,' ').trim() || '-';
+  }
+  var n = getPlain(0);
+  var addrEl = cells[2];
+  var addr = addrEl && addrEl.querySelector('.prop-addr') ? addrEl.querySelector('.prop-addr').innerText.trim() : '-';
+  var tipo = addrEl && addrEl.querySelector('.prop-type') ? addrEl.querySelector('.prop-type').innerText.trim() : '';
+  var mapsEl = addrEl ? addrEl.querySelector('a.maps-inline') : null;
+  var distrito = getPlain(3);
+  var precio = getPlain(4).replace(/\s+/g,' ');
+  var area = cells[5] ? (cells[5].dataset.val || getPlain(5)) : '-';
+  var ppm = cells[6] ? (cells[6].dataset.val || getPlain(6)) : '-';
+  var estadoIdx = -1;
+  for (var i = 7; i < cells.length; i++) {
     if (cells[i] && cells[i].querySelector('.st')) { estadoIdx = i; break; }
   }
-
-  // Cells between $/m² (6) and corredor (estadoIdx-2) are the extra numeric fields
-  let extraLines = '';
-  const extraLabels = ['🛏 Dormitorios:', '🚿 Baños:', '🚗 Cocheras:'];
-  let extraIdx = 0;
-  for (let i = 7; i < estadoIdx - 1; i++) {
-    const v = getPlain(i);
-    if (v && v !== '—') {
-      extraLines += `
-${extraLabels[extraIdx] || '•'} ${v}`;
-    }
-    extraIdx++;
+  var extraLines = '';
+  var extraLabels = ['Dormitorios', 'Banos', 'Cocheras'];
+  var ei = 0;
+  for (var i = 7; i < estadoIdx - 1; i++) {
+    var v = getPlain(i);
+    if (v && v !== '-') { extraLines += '\n' + extraLabels[ei] + ': ' + v; }
+    ei++;
   }
-
-  const corredor = estadoIdx > 1 ? getPlain(estadoIdx - 1) : '—';
-  const estado = estadoIdx > -1 ? (cells[estadoIdx].querySelector('.st')?.innerText.trim() || '—') : '—';
-  const comision = estadoIdx > -1 ? getPlain(estadoIdx + 1) : '—';
-
-  // Score
-  const scoreEl = tr.querySelector('.score');
-  const score = scoreEl ? scoreEl.innerText.trim() : '—';
-
-  // Motivo score (first txt-short)
-  const motivoEls = tr.querySelectorAll('.txt-short');
-  const motivo = motivoEls[0] ? motivoEls[0].innerText.trim() : '—';
-
-  // Condiciones (second txt-short)
-  const cond = motivoEls[1] ? motivoEls[1].innerText.trim() : '';
-
-  // Comentario textarea
-  const comentarioEl = tr.querySelector('.comentario-input');
-  const comentario = comentarioEl ? comentarioEl.value.trim() : '';
-
-  // Aviso link
-  const avisoEl = tr.querySelector('a.btn-link');
-  const aviso = avisoEl ? avisoEl.href : '—';
-
-  // Build message
-  let condLine = cond && cond !== '—' ? `
-
-📋 *Condiciones:* ${cond}` : '';
-  let comisionLine = comision && comision !== '—' ? `
-💼 *Comisión:* ${comision}` : '';
-
-  const msg =
-`📍 *Opción ${n} — ${addr}, ${distrito}*
-
-💰 *Precio:* ${precio}
-📐 *Área:* ${area} m²  |  💵 *$/m²:* ${ppm}${extraLines}
-🏠 *Tipo:* ${tipo}
-👤 *Corredor:* ${corredor}
-📊 *Estado:* ${estado}${comisionLine}${condLine}
-
-💡 *${comentario || motivo}*
-
-🔗 ${aviso}`;
-
-  document.getElementById('modal-title').innerText = '📋 Ficha cliente — Opción ' + n;
+  var corredor = estadoIdx > 1 ? getPlain(estadoIdx - 1) : '-';
+  var estadoEl = estadoIdx > -1 ? cells[estadoIdx].querySelector('.st') : null;
+  var estado = estadoEl ? estadoEl.innerText.trim() : '-';
+  var comision = estadoIdx > -1 ? getPlain(estadoIdx + 1) : '-';
+  var scoreEl = tr.querySelector('.score');
+  var score = scoreEl ? scoreEl.innerText.trim() : '-';
+  var motivoEls = tr.querySelectorAll('.txt-short');
+  var motivo = motivoEls[0] ? motivoEls[0].innerText.trim() : '-';
+  var cond = motivoEls[1] ? motivoEls[1].innerText.trim() : '';
+  var comentarioEl = tr.querySelector('.comentario-input');
+  var comentario = comentarioEl ? comentarioEl.value.trim() : '';
+  var avisoEl = tr.querySelector('a.btn-link');
+  var aviso = avisoEl ? avisoEl.href : '-';
+  var comisionLine = (comision && comision !== '-') ? '\n* Comision: ' + comision : '';
+  var condLine = (cond && cond !== '-') ? '\n\nCondiciones comerciales:\n' + cond : '';
+  var comentarioFinal = comentario || motivo;
+  var msg = 'Opcion ' + n + ' - ' + addr + ', ' + distrito + '\n\n'
+    + 'Precio: ' + precio + '\n'
+    + 'Area: ' + area + ' m2  |  $/m2: ' + ppm
+    + extraLines + '\n'
+    + 'Tipo: ' + tipo + '\n'
+    + 'Corredor: ' + corredor + '\n'
+    + 'Estado: ' + estado
+    + comisionLine
+    + condLine + '\n\n'
+    + comentarioFinal + '\n\n'
+    + aviso;
+  document.getElementById('modal-title').innerText = 'Ficha cliente - Opcion ' + n;
   document.getElementById('modal-body').innerHTML =
-    '<div style="white-space:pre-wrap;font-size:12px;line-height:1.6;background:var(--bg);padding:12px 14px;border-radius:8px;border:1px solid var(--border);margin-bottom:12px;">' +
-    msg.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') +
-    '</div>' +
+    '<pre style="white-space:pre-wrap;font-size:12px;line-height:1.6;background:var(--bg);padding:12px 14px;border-radius:8px;border:1px solid var(--border);margin-bottom:12px;font-family:inherit;">' + msg + '</pre>' +
     '<div style="display:flex;gap:8px;align-items:center;">' +
-    '<button onclick="copyFicha()" style="padding:7px 16px;font-size:12px;font-weight:700;border-radius:8px;border:1.5px solid #c8bfb2;background:#fff;cursor:pointer;font-family:inherit;">📋 Copiar para WhatsApp</button>' +
-    '<span id="ficha-copied" style="font-size:12px;color:#1a6b35;font-weight:600;display:none;">✅ Copiado</span>' +
+    '<button onclick="copyFicha()" style="padding:7px 16px;font-size:12px;font-weight:700;border-radius:8px;border:1.5px solid #c8bfb2;background:#fff;cursor:pointer;font-family:inherit;">Copiar para WhatsApp</button>' +
+    '<span id="ficha-copied" style="font-size:12px;color:#1a6b35;font-weight:600;display:none;">Copiado</span>' +
     '</div>';
-
   window._fichaMsg = msg;
   document.getElementById('modal').classList.add('open');
   document.getElementById('overlay').classList.add('open');
 }
-
 function copyFicha() {
-  navigator.clipboard.writeText(window._fichaMsg).then(() => {
-    const el = document.getElementById('ficha-copied');
+  navigator.clipboard.writeText(window._fichaMsg).then(function() {
+    var el = document.getElementById('ficha-copied');
     el.style.display = 'inline';
-    setTimeout(() => { el.style.display = 'none'; }, 2500);
+    setTimeout(function() { el.style.display = 'none'; }, 2500);
   });
 }
-
- {
-  navigator.clipboard.writeText(window._fichaMsg).then(() => {
-    const el = document.getElementById('ficha-copied');
-    el.style.display = 'flex';
-    setTimeout(() => { el.style.display = 'none'; }, 2500);
-  });
-}, 2500);
-  });
-}
-
-const now = new Date();
-const dateStr = now.toLocaleDateString('es-PE', {day:'numeric',month:'long',year:'numeric'});
+var now = new Date();
+var dateStr = now.toLocaleDateString('es-PE', {day:'numeric',month:'long',year:'numeric'});
 document.getElementById('hdate').innerText = dateStr;
 document.getElementById('fdate').innerText = dateStr;
 </script>
