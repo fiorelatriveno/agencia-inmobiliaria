@@ -452,67 +452,89 @@ function downloadExcel() {
 }
 function fichaFromRow(tr) {
   var cells = tr.querySelectorAll('td');
+
   function getPlain(i) {
-    if (!cells[i]) return '-';
+    if (!cells[i]) return '';
     var clone = cells[i].cloneNode(true);
     clone.querySelectorAll('button,a,.btn-ficha,.maps-inline').forEach(function(el) { el.remove(); });
-    return clone.innerText.replace(/\s+/g,' ').trim() || '-';
+    return clone.innerText.replace(/\s+/g,' ').trim();
   }
+
+  // Col 0=#, 1=ficha btn, 2=direccion, 3=distrito, 4=precio, 5=area, 6=$/m2
+  // then extras (dorm/banos/cocheras depending on tab), then corredor, estado, comision, score, motivo, cond, aviso, comentario, wsp
+
   var n = getPlain(0);
   var addrEl = cells[2];
-  var addr = addrEl && addrEl.querySelector('.prop-addr') ? addrEl.querySelector('.prop-addr').innerText.trim() : '-';
+  var addr = addrEl && addrEl.querySelector('.prop-addr') ? addrEl.querySelector('.prop-addr').innerText.trim() : '';
   var tipo = addrEl && addrEl.querySelector('.prop-type') ? addrEl.querySelector('.prop-type').innerText.trim() : '';
-  var mapsEl = addrEl ? addrEl.querySelector('a.maps-inline') : null;
   var distrito = getPlain(3);
-  var precio = getPlain(4).replace(/\s+/g,' ');
-  var area = cells[5] ? (cells[5].dataset.val || getPlain(5)) : '-';
-  var ppm = cells[6] ? (cells[6].dataset.val || getPlain(6)) : '-';
+
+  // Precio: only first line (no soles conversion)
+  var precioEl = cells[4] ? cells[4].querySelector('.price-val') : null;
+  var precio = precioEl ? precioEl.innerText.trim() : getPlain(4);
+
+  var area = cells[5] ? (cells[5].dataset.val || getPlain(5)) : '';
+
+  // Find estado cell to determine column layout
   var estadoIdx = -1;
   for (var i = 7; i < cells.length; i++) {
     if (cells[i] && cells[i].querySelector('.st')) { estadoIdx = i; break; }
   }
-  var extraLines = '';
-  var extraLabels = ['Dormitorios', 'Banos', 'Cocheras'];
-  var ei = 0;
+
+  // Extra fields between col6 and corredor (estadoIdx-1)
+  // Could be: dorm, banos, cocheras (3 extras) or banos, cocheras (2 extras)
+  var extras = [];
+  var extraLabelsAll = [
+    { key: 'dorm', emoji: '\uD83D\uDECF', label: 'dormitorios' },
+    { key: 'banos', emoji: '\uD83D\uDEB0', label: 'ba\u00F1os' },
+    { key: 'coch', emoji: '\uD83D\uDE97', label: 'cocheras' }
+  ];
+  var numExtras = estadoIdx - 1 - 7; // cells 7 to estadoIdx-2
+  var startLabel = numExtras === 3 ? 0 : 1; // if 3 extras: dorm+banos+coch, if 2: banos+coch
   for (var i = 7; i < estadoIdx - 1; i++) {
     var v = getPlain(i);
-    if (v && v !== '-') { extraLines += '\n' + extraLabels[ei] + ': ' + v; }
-    ei++;
+    var labelIdx = startLabel + (i - 7);
+    if (v && v !== '-' && v !== '\u2014') {
+      extras.push({ emoji: extraLabelsAll[labelIdx].emoji, val: v, label: extraLabelsAll[labelIdx].label });
+    }
   }
-  var corredor = estadoIdx > 1 ? getPlain(estadoIdx - 1) : '-';
-  var estadoEl = estadoIdx > -1 ? cells[estadoIdx].querySelector('.st') : null;
-  var estado = estadoEl ? estadoEl.innerText.trim() : '-';
-  var comision = estadoIdx > -1 ? getPlain(estadoIdx + 1) : '-';
-  var scoreEl = tr.querySelector('.score');
-  var score = scoreEl ? scoreEl.innerText.trim() : '-';
-  var motivoEls = tr.querySelectorAll('.txt-short');
-  var motivo = motivoEls[0] ? motivoEls[0].innerText.trim() : '-';
-  var cond = motivoEls[1] ? motivoEls[1].innerText.trim() : '';
+
+  // Comentario (editable textarea - use this as the commercial comment)
   var comentarioEl = tr.querySelector('.comentario-input');
   var comentario = comentarioEl ? comentarioEl.value.trim() : '';
-  var avisoEl = tr.querySelector('a.btn-link');
-  var aviso = avisoEl ? avisoEl.href : '-';
-  var comisionLine = (comision && comision !== '-') ? '\n* Comision: ' + comision : '';
-  var condLine = (cond && cond !== '-') ? '\n\nCondiciones comerciales:\n' + cond : '';
+
+  // Motivo Score as fallback
+  var motivoEls = tr.querySelectorAll('.txt-short');
+  var motivo = motivoEls[0] ? motivoEls[0].innerText.trim() : '';
   var comentarioFinal = comentario || motivo;
-  var msg = 'Opcion ' + n + ' - ' + addr + ', ' + distrito + '\n\n'
-    + 'Precio: ' + precio + '\n'
-    + 'Area: ' + area + ' m2  |  $/m2: ' + ppm
-    + extraLines + '\n'
-    + 'Tipo: ' + tipo + '\n'
-    + 'Corredor: ' + corredor + '\n'
-    + 'Estado: ' + estado
-    + comisionLine
-    + condLine + '\n\n'
-    + comentarioFinal + '\n\n'
-    + aviso;
-  document.getElementById('modal-title').innerText = 'Ficha cliente - Opcion ' + n;
+
+  // Build WhatsApp message - NO corredor, comision, estado, score, link, maps
+  var extrasLine = '';
+  extras.forEach(function(e) {
+    extrasLine += '\n' + e.emoji + ' ' + e.val + ' ' + e.label;
+  });
+
+  var msg = '*\uD83D\uDCCD Opci\u00F3n ' + n + ' \u2013 ' + distrito + '*'
+    + '\n\n'
+    + '*\uD83D\uDCB0 Precio:* ' + precio + '\n'
+    + '*\uD83D\uDCD0 \u00C1rea:* ' + area + ' m\u00B2'
+    + extrasLine + '\n'
+    + '*\uD83C\uDFE0 Tipo:* ' + tipo
+    + '\n\n'
+    + '*\u2728 ' + comentarioFinal + '*'
+    + '\n\n'
+    + '_Si te interesa esta opci\u00F3n, podemos coordinar una visita y brindarte m\u00E1s detalles._';
+
+  document.getElementById('modal-title').innerText = 'Ficha para cliente — Opción ' + n;
   document.getElementById('modal-body').innerHTML =
-    '<pre style="white-space:pre-wrap;font-size:12px;line-height:1.6;background:var(--bg);padding:12px 14px;border-radius:8px;border:1px solid var(--border);margin-bottom:12px;font-family:inherit;">' + msg + '</pre>' +
+    '<pre style="white-space:pre-wrap;font-size:12.5px;line-height:1.75;background:var(--bg);padding:14px 16px;border-radius:8px;border:1px solid var(--border);margin-bottom:14px;font-family:inherit;">' +
+    msg.replace(/</g,'&lt;').replace(/>/g,'&gt;') +
+    '</pre>' +
     '<div style="display:flex;gap:8px;align-items:center;">' +
-    '<button onclick="copyFicha()" style="padding:7px 16px;font-size:12px;font-weight:700;border-radius:8px;border:1.5px solid #c8bfb2;background:#fff;cursor:pointer;font-family:inherit;">Copiar para WhatsApp</button>' +
-    '<span id="ficha-copied" style="font-size:12px;color:#1a6b35;font-weight:600;display:none;">Copiado</span>' +
+    '<button onclick="copyFicha()" style="padding:8px 18px;font-size:12px;font-weight:700;border-radius:8px;border:1.5px solid #c8bfb2;background:#fff;cursor:pointer;font-family:inherit;">\uD83D\uDCCB Copiar para WhatsApp</button>' +
+    '<span id="ficha-copied" style="font-size:12px;color:#1a6b35;font-weight:600;display:none;">✅ Copiado</span>' +
     '</div>';
+
   window._fichaMsg = msg;
   document.getElementById('modal').classList.add('open');
   document.getElementById('overlay').classList.add('open');
