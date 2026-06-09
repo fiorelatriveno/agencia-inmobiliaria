@@ -325,8 +325,17 @@ tr.hidden-row{display:none;}
       </div>
     </div>
   </div>
+  <div class="filter-bar">
+    <span class="filter-label">Filtrar por estado:</span>
+    <div class="filter-btns">
+      <span class="fbtn active" id="fb-miraflores-all" onclick="filterTable('miraflores','all',this)">Todos <span class="fbadge">7</span></span>
+      <span class="fbtn" id="fb-miraflores-ok" onclick="filterTable('miraflores','ok',this)">&#x2705; Acept&oacute; <span class="fbadge">1</span></span>
+      <span class="fbtn" id="fb-miraflores-no" onclick="filterTable('miraflores','no',this)">&#x274C; No acept&oacute; <span class="fbadge">2</span></span>
+      <span class="fbtn" id="fb-miraflores-pend" onclick="filterTable('miraflores','pend',this)">&#x23F3; Por confirmar <span class="fbadge">4</span></span>
+    </div>
+  </div>
   <div class="table-wrap">
-    <div class="table-header"><span class="table-title">Propiedades encontradas</span></div>
+    <div class="table-header"><span class="table-title">Propiedades encontradas</span><span class="active-filter-badge" id="afb-miraflores">Filtro activo</span></div>
     <div class="table-scroll"><table id="table-miraflores"><thead><tr>
       <th class="no-sort">#</th><th class="no-sort">Ficha</th>
       <th onclick="sortTable('miraflores',2)">Direcci&oacute;n</th>
