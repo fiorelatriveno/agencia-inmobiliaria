@@ -15,5 +15,5 @@ var COUNTS = {
   surco: { total: 9, ok: 4, no: 2, pend: 3 },
   barranco: { total: 4, ok: 2, no: 2, pend: 0 },
   victoria: { total: 0, ok: 0, no: 0, pend: 0 },
-  miraflores: { total: 4, ok: 1, no: 2, pend: 1 }
+  miraflores: { total: 5, ok: 1, no: 2, pend: 2 }
 };
