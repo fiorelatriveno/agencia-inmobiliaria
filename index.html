@@ -497,9 +497,19 @@ function tableToArray(tableId) {
   table.querySelectorAll('tbody tr[data-status]').forEach(function(tr) {
     var row = [];
     tr.querySelectorAll('td').forEach(function(td) {
-      var a = td.querySelector('a.btn-link, a.btn-wsp');
-      if (a) { row.push(a.href || ''); }
-      else { row.push(td.innerText.replace(/\n/g,' ').trim()); }
+      // Skip ficha buttons column
+      if (td.querySelector('.btn-ficha')) { row.push(''); return; }
+      // For aviso/wsp links, collect all hrefs
+      var links = td.querySelectorAll('a.btn-link, a.btn-wsp');
+      if (links.length > 0) {
+        var hrefs = Array.from(links).map(function(a) { return a.href || ''; });
+        row.push(hrefs.join(' | '));
+      } else {
+        // Clean text: remove Maps link text
+        var clone = td.cloneNode(true);
+        clone.querySelectorAll('.maps-inline, button').forEach(function(el) { el.remove(); });
+        row.push(clone.innerText.replace(/\n/g,' ').replace(/\s+/g,' ').trim());
+      }
     });
     rows.push(row);
   });
@@ -508,10 +518,11 @@ function tableToArray(tableId) {
 function downloadExcel() {
   var wb = XLSX.utils.book_new();
   var sheets = [
-    {id:'table-surco', name:'Valle Hermoso - Sr. Guido'},
-    {id:'table-barranco', name:'Barranco - Airbnb Ops'},
-    {id:'table-victoria', name:'La Victoria - Almacen'},
-    {id:'table-miraflores', name:'Miraflores - Gerbert y Rocio'}
+    {id:'table-surco',         name:'Valle Hermoso - Sr. Guido'},
+    {id:'table-barranco',      name:'Barranco - Pablo - Airbnb Ops'},
+    {id:'table-victoria',      name:'La Victoria - Almacen'},
+    {id:'table-wilson',        name:'Depa 90K Wilson'},
+    {id:'table-alquiler-mira', name:'Miraflores Alquiler Depa Deyssi'}
   ];
   sheets.forEach(function(s) {
     var data = tableToArray(s.id);
