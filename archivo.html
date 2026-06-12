@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archivo — Casos Cerrados</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1ec;--surface:#fff;--surface2:#f0ece4;--border:#e0d9ce;--border2:#c8bfb2;--text:#1c1814;--text2:#5c574f;--text3:#9c9488;--accent:#c8522a;--accent-light:#fdf0eb;--green:#1a6b35;--green-light:#e6f5ec;--blue:#1a3f6b;--blue-light:#e6eef8;--amber:#8a5500;--amber-light:#fef5e0;--red:#8b1a1a;--red-light:#fdeaea;--urgent:#8b1a1a;--urgent-light:#fdeaea;--gray:#5a5550;--gray-light:#f0ece4;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(0,0,0,0.07);--shadow-md:0 4px 20px rgba(0,0,0,0.10);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Outfit",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+.header{background:linear-gradient(135deg,#1c1814 0%,#2d2520 100%);padding:24px 36px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow-md);}
+.header-left{display:flex;align-items:center;gap:14px;}
+.header-icon{width:42px;height:42px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.header-brand{font-family:"Playfair Display",serif;font-size:22px;color:#fff;}
+.header-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.header-right{display:flex;gap:12px;align-items:center;}
+.header-stat{text-align:center;background:rgba(255,255,255,0.07);border-radius:8px;padding:8px 16px;}
+.header-stat .hs-num{font-size:20px;font-weight:700;color:#fff;line-height:1;}
+.header-stat .hs-lbl{font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.btn-excel{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:9px 16px;border-radius:var(--radius-sm);border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.1);color:#fff;cursor:pointer;transition:all 0.18s;white-space:nowrap;}
+.btn-excel:hover{background:rgba(255,255,255,0.2);}
+.tabs-wrap{background:var(--surface);border-bottom:2px solid var(--border);padding:0 36px;display:flex;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.tab{padding:16px 22px;font-size:13px;font-weight:600;color:var(--text3);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s;user-select:none;margin-bottom:-2px;}
+.tab:hover{color:var(--text);background:var(--surface2);}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--accent-light);}
+.tab.urgent-tab{color:var(--urgent);}
+.tab.urgent-tab.active{border-bottom-color:var(--urgent);background:var(--urgent-light);}
+.tab .count{display:inline-block;background:var(--surface2);color:var(--text2);font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;}
+.tab.active .count{background:var(--accent);color:#fff;}
+.tab.urgent-tab.active .count{background:var(--urgent);color:#fff;}
+.main{padding:28px 36px;max-width:1600px;margin:0 auto;}
+.panel{display:none;}.panel.active{display:block;}
+.client-card{background:var(--surface);border-radius:var(--radius);margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;}
+.client-card.urgent{border-left:4px solid var(--urgent);}
+.client-card.compra{border-left:4px solid var(--blue);}
+.client-card.alquiler{border-left:4px solid var(--green);}
+.client-card-header{padding:10px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.cc-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);white-space:nowrap;}
+.cc-divider{width:1px;height:14px;background:var(--border2);flex-shrink:0;}
+.cc-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:3px 10px;white-space:nowrap;}
+.chip.urgent-chip{color:var(--urgent);background:var(--urgent-light);border-color:rgba(139,26,26,0.2);font-weight:700;}
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.badge-compra{background:var(--blue-light);color:var(--blue);border:1px solid rgba(26,63,107,0.2);}
+.badge-alquiler{background:var(--green-light);color:var(--green);border:1px solid rgba(26,107,53,0.2);}
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;box-shadow:var(--shadow);flex-wrap:wrap;}
+.filter-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.07em;white-space:nowrap;margin-right:4px;}
+.filter-btns{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.fbtn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--text2);cursor:pointer;transition:all 0.18s;user-select:none;white-space:nowrap;}
+.fbtn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.fbtn.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent);}
+.fbtn .fbadge{font-size:10px;font-weight:700;background:var(--border2);color:var(--text2);padding:1px 6px;border-radius:10px;transition:all 0.18s;}
+.fbtn.active .fbadge{background:var(--accent);color:#fff;}
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.table-header{padding:13px 18px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to right,#f8f5f0,#fff);}
+.table-title{font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;}
+.active-filter-badge{background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(200,82,42,0.3);display:none;align-items:center;gap:5px;}
+.active-filter-badge.visible{display:inline-flex;}
+.table-scroll{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{background:#f0ece4;color:var(--text2);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;transition:background 0.15s;}
+th:hover{background:#e8e0d4;color:var(--text);}
+th.sort-asc::after{content:" ↑";color:var(--accent);font-weight:900;}
+th.sort-desc::after{content:" ↓";color:var(--accent);font-weight:900;}
+th.no-sort{cursor:default;}
+th.no-sort:hover{background:#f0ece4;color:var(--text2);}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;line-height:1.4;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#faf8f5;}
+tr.hidden-row{display:none;}
+.n{color:var(--text3);font-weight:700;font-size:12px;background:var(--surface2);border-radius:6px;padding:3px 7px;display:inline-block;min-width:26px;text-align:center;}
+.prop-addr{font-weight:400;font-size:13px;color:var(--text);}
+.prop-meta{display:flex;align-items:center;gap:6px;margin-top:3px;}
+.prop-type{font-size:10px;font-weight:500;color:var(--text3);}
+.maps-inline{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;color:var(--blue);text-decoration:none;opacity:0.75;transition:opacity 0.15s;}
+.maps-inline:hover{opacity:1;}
+.price-val{font-weight:700;color:var(--text);white-space:nowrap;font-size:13px;}
+.price-sub{font-size:10px;color:var(--text3);margin-top:1px;}
+.ppm{font-size:12px;font-weight:600;color:var(--blue);}
+.st{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;}
+.st-ok{background:var(--green-light);color:var(--green);border:1px solid rgba(26,107,53,0.2);}
+.st-no{background:var(--red-light);color:var(--red);border:1px solid rgba(139,26,26,0.2);}
+.st-pend{background:var(--amber-light);color:var(--amber);border:1px solid rgba(138,85,0,0.2);}
+.st-desc{background:var(--gray-light);color:var(--gray);border:1px solid rgba(90,85,80,0.2);}
+.score{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;cursor:pointer;}
+.score-5{background:#e6f5ec;color:#1a6b35;border:1px solid rgba(26,107,53,0.2);}
+.score-4{background:#eef5e6;color:#3a6b1a;border:1px solid rgba(58,107,26,0.2);}
+.score-3{background:var(--amber-light);color:var(--amber);border:1px solid rgba(138,85,0,0.2);}
+.score-2{background:#fef0e0;color:#8a3300;border:1px solid rgba(138,51,0,0.2);}
+.score-1{background:var(--red-light);color:var(--red);border:1px solid rgba(139,26,26,0.2);}
+.txt-expand{cursor:pointer;}
+.txt-short{font-size:11px;color:var(--text2);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px dashed var(--border2);}
+.btn-ficha-int{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:5px 9px;border-radius:var(--radius-sm);border:1.5px solid rgba(26,63,107,0.35);background:var(--blue-light);color:var(--blue);cursor:pointer;white-space:nowrap;transition:all 0.15s;margin-left:4px;}
+.btn-ficha-int:hover{background:#c8d8f0;transform:translateY(-1px);}
+.btn-ficha{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:5px 9px;border-radius:var(--radius-sm);border:1.5px solid rgba(200,82,42,0.35);background:var(--accent-light);color:var(--accent);cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.btn-ficha:hover{background:#f5d0bf;transform:translateY(-1px);}
+.btn-wsp{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:var(--radius-sm);border:1.5px solid rgba(26,107,53,0.3);background:var(--green-light);color:var(--green);cursor:pointer;text-decoration:none;transition:all 0.15s;white-space:nowrap;}
+.btn-wsp:hover{background:#c8e8d0;transform:translateY(-1px);}
+.btn-link{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:5px 10px;border-radius:var(--radius-sm);border:1.5px solid var(--border2);background:var(--surface);color:var(--text2);cursor:pointer;text-decoration:none;transition:all 0.15s;white-space:nowrap;}
+.btn-link:hover{border-color:var(--text);color:var(--text);transform:translateY(-1px);}
+.comentario-cell{min-width:160px;max-width:200px;}
+.comentario-input{width:100%;font-size:11px;font-family:inherit;color:var(--text2);background:transparent;border:none;border-bottom:1px dashed var(--border2);outline:none;resize:none;padding:2px 0;line-height:1.4;min-height:32px;cursor:text;}
+.comentario-input:focus{border-bottom:1px solid var(--accent);color:var(--text);background:var(--accent-light);}
+.comentario-input::placeholder{color:var(--text3);font-style:italic;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:999;}
+.overlay.open{display:block;}
+.txt-modal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;max-width:460px;width:92%;box-shadow:var(--shadow-md);z-index:1000;font-size:13px;line-height:1.6;color:var(--text);}
+.txt-modal.open{display:block;}
+.txt-modal-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);margin-bottom:10px;}
+.txt-modal-close{position:absolute;top:12px;right:16px;cursor:pointer;font-size:18px;color:var(--text3);}
+.empty-row td{text-align:center;color:var(--text3);font-style:italic;padding:40px;font-size:13px;}
+.footer{text-align:center;padding:24px;font-size:11px;color:var(--text3);border-top:1px solid var(--border);margin-top:32px;font-weight:500;}
+@media(max-width:768px){.header,.main{padding:16px;}.tabs-wrap{padding:0 16px;}.header-right{display:none;}}
+</style>
+<style>
+.header-archivo{background:linear-gradient(135deg,#3a3530 0%,#4d4540 100%);}
+.tab-archivo{color:#9c9488 !important;border-bottom-color:#9c9488 !important;background:#f0ece4 !important;}
+.tab-archivo.active{color:#5a5550 !important;border-bottom-color:#5a5550 !important;background:#e8e0d4 !important;}
+.tab-archivo.active .count{background:#5a5550 !important;}
+.closed-chip{background:#f0ece4;color:#5a5550;border:1px solid #c8bfb2;font-weight:700;}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<div class="txt-modal" id="modal">
+  <div class="txt-modal-close" onclick="closeModal()">&#x2715;</div>
+  <div class="txt-modal-title" id="modal-title"></div>
+  <div id="modal-body"></div>
+</div>
+
+<div class="header header-archivo">
+  <div class="header-left">
+    <div class="header-icon" style="background:#5a5550;">&#x1F4C2;</div>
+    <div>
+      <div class="header-brand">Archivo de Casos</div>
+      <div class="header-sub">Agencia Inmobiliaria &middot; Casos cerrados</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:9px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.1);color:#fff;text-decoration:none;">&#x2190; Volver a clientes activos</a>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tab tab-archivo active" onclick="switchTab('miraflores',this)">&#x1F512; Gerbert &amp; Roc&iacute;o &middot; Miraflores/San Isidro <span class="count">8</span></div>
+</div>
+
+<div class="main">
+<!-- MIRAFLORES -->
+<div id="panel-miraflores" class="panel active">
+  <div class="client-card urgent">
+    <div class="client-card-header">
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
+      <span class="badge" style="background:#f0ece4;color:#5a5550;border:1px solid #c8bfb2;">&#x1F512; Caso cerrado</span>
+      <div class="cc-chips">
+        <span class="chip">&#x1F464; Gerbert y Roc&iacute;o</span>
+        <span class="chip">&#x1F4CD; Miraflores o San Isidro</span>
+        <span class="chip">&#x1F4B0; USD 190,000</span>
+        <span class="chip">&#x1F3E0; Departamento &middot; 2 o 3 dorms</span>
+        <span class="chip">&#x1F3E6; Cr&eacute;dito hipotecario aprobado</span>
+        <span class="chip closed-chip">&#x2705; Compraron por su cuenta</span>
+      </div>
+    </div>
+  </div>
+  <div class="filter-bar">
+    <span class="filter-label">Filtrar por estado:</span>
+    <div class="filter-btns">
+      <span class="fbtn active" id="fb-miraflores-all" onclick="filterTable('miraflores','all',this)">Todos <span class="fbadge">8</span></span>
+      <span class="fbtn" id="fb-miraflores-ok" onclick="filterTable('miraflores','ok',this)">&#x2705; Acept&oacute; <span class="fbadge">3</span></span>
+      <span class="fbtn" id="fb-miraflores-no" onclick="filterTable('miraflores','no',this)">&#x274C; No acept&oacute; <span class="fbadge">2</span></span>
+      <span class="fbtn" id="fb-miraflores-pend" onclick="filterTable('miraflores','pend',this)">&#x23F3; Por confirmar <span class="fbadge">3</span></span>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <div class="table-header"><span class="table-title">Propiedades encontradas</span><span class="active-filter-badge" id="afb-miraflores">Filtro activo</span></div>
+    <div class="table-scroll"><table id="table-miraflores"><thead><tr>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('miraflores',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('miraflores',3)">Distrito</th>
+      <th onclick="sortTable('miraflores',4)">Precio</th>
+      <th onclick="sortTable('miraflores',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('miraflores',6)">$/m&sup2;</th>
+      <th onclick="sortTable('miraflores',7)">Dorm.</th>
+      <th onclick="sortTable('miraflores',8)">Ba&ntilde;os</th>
+      <th onclick="sortTable('miraflores',9)">Cocheras</th>
+      <th onclick="sortTable('miraflores',10)">Corredor</th>
+      <th onclick="sortTable('miraflores',11)">Estado</th>
+      <th onclick="sortTable('miraflores',12)">Comisi&oacute;n</th>
+      <th onclick="sortTable('miraflores',13)">Score</th>
+      <th class="no-sort">Motivo</th>
+      <th class="no-sort">Cond. Comerciales</th>
+      <th class="no-sort">Comentario</th>
+      <th class="no-sort">Aviso</th>
+      </tr></thead>
+    <tbody id="tbody-miraflores"><tr data-status="pend"><td><span class="n">2</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Paseo de la República / Angamos</div><div class="prop-meta"><span class="prop-type">Departamento</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Paseo+de+la+Republica+Angamos+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="156000"><div class="price-val">USD 156,000</div></td><td data-val="72">72</td><td class="ppm" data-val="2167">2,167</td><td data-val="2">2</td><td data-val="2">2</td><td data-val="0">No indica</td><td>Yajaira Fretel</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Miraflores puro, a una cuadra de Angamos. Precio con margen respecto al presupuesto. Sin cochera confirmada. Área de 72m² es pequeña para el cliente. Pendiente confirmar hipotecario y comisión.')">🟡 3.5/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro, precio con margen. Sin cochera confirmada. Área 72m² reducida. Pendiente comisión e hipotecario.')"><span class="txt-short">Miraflores puro, área pequeña</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','USD 156,000. Opción de adquirir amoblado. Sin cochera mencionada. Edificio con seguridad 24/7, parque interno, salón lounge y zona BBQ. Contacto solo por Facebook.')"><span class="txt-short">USD 156k, opción amoblado, sin cochera</span></div></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Departamento en Miraflores puro con 2 balcones y excelente iluminación. El precio más competitivo del distrito para este metraje.</textarea></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/25472100139154531/" target="_blank">📘 Marketplace</a></td></tr>
+      <tr data-status="no"><td><span class="n">1</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Sergio Bernales, Surquillo (límite Miraflores)</div><div class="prop-meta"><span class="prop-type">Dúplex</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Sergio+Bernales+Surquillo+Lima" target="_blank">📍 Maps</a></div></td><td>Surquillo / Miraflores</td><td data-val="190000"><div class="price-val">USD 190,000</div><div class="price-sub">S/ 638,000 (conversable)</div></td><td data-val="104">104</td><td class="ppm" data-val="1827">1,827</td><td data-val="2">2 + 1 adicional</td><td data-val="2">2</td><td data-val="1">1 (sótano)</td><td>Erika Canela (Grupo Proyecta)</td><td><span class="st st-no">❌ No disponible</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Precio exacto al presupuesto del cliente (USD 190,000 conversable). Dúplex con áreas comunes completas: piscina, gimnasio, parrillas. Zona limítrofe con Miraflores pero técnicamente Surquillo. 15 años de antigüedad. Pendiente confirmar si acepta crédito hipotecario.')">🟡 3/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Precio exacto al presupuesto. Dúplex con piscina, gimnasio y parrillas. Zona limítrofe Miraflores pero técnicamente Surquillo. 15 años antigüedad.')"><span class="txt-short">Precio exacto, zona limítrofe Miraflores</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Precio S/638,000 / USD 190,000 algo conversable. Mantenimiento S/310. Incluye 1 estacionamiento en sótano y depósito. Antigüedad 15 años. Contacto solo por Facebook Marketplace.')"><span class="txt-short">USD 190k conversable, mant. S/310</span></div></td><td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Dúplex en el límite exacto con Miraflores, al presupuesto del cliente. Precio conversable y zonas comunes completas.</textarea></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/1389736702525189/" target="_blank">📘 Marketplace</a></td></tr>
+          <tr data-status="ok"><td><span class="n">3</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Calle Berlín 353, Miraflores</div><div class="prop-meta"><span class="prop-type">Departamento</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+Berlin+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="174000"><div class="price-val">USD 174,000</div><div class="price-sub">Remate por viaje · 2023</div></td><td data-val="67">67</td><td class="ppm" data-val="2597">2,597</td><td data-val="2">2</td><td data-val="2">2</td><td data-val="1">1</td><td>Katia Vivanco · 922982353</td><td><span class="st st-ok">✅ Aceptó</span></td><td>33% (comparte con otra colega)</td><td><span class="score score-4" onclick="openModal('Motivo Score','Miraflores puro a 3 cuadras del Parque Kennedy. Full amoblado de lujo. Precio por debajo del presupuesto del cliente con margen para negociar.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro a 3 cuadras del Parque Kennedy. Full amoblado de lujo incluido. Remate por viaje — vendedor motivado.')"><span class="txt-short">Miraflores puro, amoblado lujo, remate</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Remate por viaje. Full amoblado y decorado por diseñador incluido. Áreas comunes: piscina, gimnasio, zona parrilla, sala bar. Contacto solo por Facebook.')"><span class="txt-short">Remate por viaje, full amoblado incluido</span></div></td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">A 3 cuadras del Parque Kennedy, full amoblado de lujo incluido y vendedor motivado por viaje — difícil encontrar esta combinación en Miraflores a este precio.</textarea></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/682467844961643/" target="_blank">📘 Marketplace</a> <a class="btn-link" href="https://vista-real-estate.com/29313/vende-Departamento-Miraflores.html" target="_blank">🔗 Vista RE</a></td></tr>
+      <tr data-status="no"><td><span class="n">4</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Calle Acacias, Miraflores</div><div class="prop-meta"><span class="prop-type">Departamento · Piso 10</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Calle+Acacias+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="179000"><div class="price-val">USD 179,000</div><div class="price-sub">Mant. S/ 400</div></td><td data-val="93">93</td><td class="ppm" data-val="1925">1,925</td><td data-val="2">2</td><td data-val="3">3 (2 + servicio)</td><td data-val="1">1 techada</td><td>Pilar Herrera Salazar</td><td><span class="st st-no">❌ No disponible</span></td><td>—</td><td><span class="score score-4" onclick="openModal('Motivo Score','Miraflores puro en Calle Acacias, piso 10 con balcón y vista a Paseo de la República. Cochera techada incluida. Precio dentro del presupuesto del cliente.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro, piso 10 con balcón y vista a Paseo de la República. Cochera techada incluida. 15 años de antigüedad.')"><span class="txt-short">Miraflores puro, piso 10, balcón vista</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','Precio USD 179,000. Mantenimiento S/400. 15 años de antigüedad. 1 estacionamiento techado incluido. Contacto solo por Facebook.')"><span class="txt-short">USD 179k, mant. S/400, 15 años antigüedad</span></div></td><td class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Piso 10 con balcón y vista directa a Paseo de la República en Miraflores puro — el tipo de ubicación y vista que normalmente está fuera de este presupuesto.</textarea></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/26808668342106159/" target="_blank">📘 Marketplace</a></td></tr>
+      <tr data-status="ok"><td><span class="n">5</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Ca. José Toribio Polo 322</div><div class="prop-meta"><span class="prop-type">Departamento · Piso 6</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Jose+Toribio+Polo+322+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="193500"><div class="price-val">USD 193,500</div><div class="price-sub">Mant. S/ 400 · De estreno</div></td><td data-val="68">68</td><td class="ppm" data-val="2846">2,846</td><td data-val="2">2</td><td data-val="2">2</td><td data-val="1">1 techada</td><td>Sergio Guillen Alvarez</td><td><span class="st st-ok">✅ Aceptó</span></td><td>Por definir</td><td><span class="score score-3" onclick="openModal('Motivo Score','Miraflores puro, de estreno, piso 6 con balcón y cochera techada. Precio USD 3,500 sobre el presupuesto pero negociable.')">🟡 3.5/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Miraflores puro, de estreno, piso 6. Precio ligeramente sobre presupuesto pero negociable.')"><span class="txt-short">Estreno, piso 6, precio negociable</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','USD 193,500. Mant. S/400. De estreno. 1 estacionamiento techado.')"><span class="txt-short">USD 193.5k, mant. S/400, de estreno</span></div></td><td><div class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">De estreno en Miraflores con balcón, cochera techada y BBQ — una combinación poco frecuente a este precio. Precio ligeramente sobre presupuesto pero con margen real para negociar.</textarea></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/1330157568927688/" target="_blank">📘 Marketplace</a></td></tr>
+      <tr data-status="pend"><td><span class="n">6</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Miraflores, límite San Isidro</div><div class="prop-meta"><span class="prop-type">Departamento · Estreno</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Miraflores+limite+San+Isidro+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="158000"><div class="price-val">USD 158,000</div><div class="price-sub">No paga alcabala · Entrega inmediata</div></td><td data-val="54">54</td><td class="ppm" data-val="2926">2,926</td><td data-val="2">2</td><td data-val="2">2</td><td data-val="0">No indica</td><td>Por confirmar</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Miraflores límite San Isidro, estreno, sin alcabala. Sin cochera. Área 54m² la más pequeña.')">🟡 3.5/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','Estreno en Miraflores límite San Isidro. Sin alcabala, entrega inmediata. Sin cochera. 54m².')"><span class="txt-short">Estreno, sin alcabala, área pequeña</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','USD 158,000. Sin alcabala. Entrega inmediata. Sin cochera.')"><span class="txt-short">USD 158k, sin alcabala, inmediata</span></div></td><td><div class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">Estreno en Miraflores límite San Isidro con entrega inmediata y sin alcabala — un ahorro real que pocos ofrecen. Ideal si el cliente prioriza ubicación y precio sobre el metraje.</textarea></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/1446578157274021/" target="_blank">📘 Marketplace</a></td></tr>
+      <tr data-status="ok"><td><span class="n">7</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Miraflores (zona residencial)</div><div class="prop-meta"><span class="prop-type">Departamento · Piso 5</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Miraflores+Lima+residencial" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="195000"><div class="price-val">USD 195,000</div><div class="price-sub">Mant. S/ 500 · 12 años</div></td><td data-val="97">97.44</td><td class="ppm" data-val="2001">2,001</td><td data-val="3">3 (actualmente 2)</td><td data-val="3">3 + visita + servicio</td><td data-val="1">1 (primer nivel)</td><td>Miladis Sifontes</td><td><span class="st st-ok">✅ Aceptó</span></td><td>50/50</td><td><span class="score score-4" onclick="openModal('Motivo Score','Mayor metraje del listado (97m²). Solo 2 dptos por piso. Cochera primer nivel. Precio USD 5k sobre presupuesto pero negociable.')">🟢 4/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','97m², solo 2 dptos por piso, 3 dormitorios, cochera primer nivel. Precio negociable.')"><span class="txt-short">Mejor metraje, 3 dorms, 2 por piso</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','USD 195,000 negociable. Mant. S/500. 12 años. Cochera primer nivel.')"><span class="txt-short">USD 195k negociable, mant. S/500</span></div></td><td><div class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">El departamento más amplio del listado con casi 100m², 3 dormitorios y solo 2 unidades por piso. Una privacidad y amplitud difícil de igualar en Miraflores a este precio.</textarea></div></td><td><a class="btn-link" href="https://www.facebook.com/marketplace/item/989765960208918/" target="_blank">📘 Marketplace</a> <a class="btn-wsp" href="https://wa.me/51998000025" target="_blank">💬 WhatsApp</a></td></tr>      <tr data-status="pend"><td><span class="n">8</span></td><td><button class="btn-ficha" onclick="fichaFromRow(this.closest('tr'))">📋 Ficha Cliente</button> <button class="btn-ficha-int" onclick="fichaInterna(this.closest('tr'))">🔒 Ficha Interna</button></td><td><div class="prop-addr">Av. Díez Canseco 500</div><div class="prop-meta"><span class="prop-type">Departamento</span><span class="prop-type">·</span><a class="maps-inline" href="https://maps.google.com/?q=Av+Ernesto+Diez+Canseco+500+Miraflores+Lima" target="_blank">📍 Maps</a></div></td><td>Miraflores</td><td data-val="159900"><div class="price-val">USD 159,900</div></td><td data-val="102">102</td><td class="ppm" data-val="1568">1,568</td><td data-val="2">2 + cuarto adicional</td><td data-val="2">2</td><td data-val="0">No indica</td><td>Zasi Liceth Villanueva Haro</td><td><span class="st st-pend">⏳ Por confirmar</span></td><td>—</td><td><span class="score score-3" onclick="openModal('Motivo Score','Miraflores puro en Av. Díez Canseco. 102m² con cuarto adicional para home office. Precio con margen. Año 1960, antigüedad considerable. Sin cochera confirmada.')">🟡 3.5/5</span></td><td><div class="txt-expand" onclick="openModal('Motivo Score','102m² en Miraflores puro. Precio con margen. 2 dorm + cuarto adicional. Año 1960 es el punto débil. Sin cochera.')"><span class="txt-short">Miraflores puro, 102m², año 1960</span></div></td><td><div class="txt-expand" onclick="openModal('Condiciones Comerciales','USD 159,900. Sin amoblar. Balcón, armario empotrado y cuarto de servicio. Año 1960. Sin cochera confirmada.')"><span class="txt-short">USD 159.9k, sin cochera, año 1960</span></div></td><td><div class="comentario-cell"><textarea class="comentario-input" placeholder="Agregar comentario..." rows="2">102m² en pleno corazón de Miraflores con cuarto adicional para home office — una distribución generosa y versátil. Precio con margen real respecto al presupuesto del cliente.</textarea></div></td><td><a class="btn-link" href="https://www.laencontre.com.pe/inmueble/656b-a9bd-19a9df8-1f0304157114-7185" target="_blank">🔗 LaEncontre</a></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+</div>
+<div class="footer">&#x1F4C2; Archivo de Casos &middot; Agencia Inmobiliaria</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+function openModal(title, body) {
+  document.getElementById('modal-title').innerText = title;
+  document.getElementById('modal-body').innerText = body;
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+function switchTab(t, el) {
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('panel-' + t).classList.add('active');
+  el.classList.add('active');
+}
+function filterTable(tab, status, btn) {
+  var tbody = document.getElementById('tbody-' + tab);
+  if (!tbody) return;
+  tbody.querySelectorAll('tr[data-status]').forEach(function(r) {
+    r.classList.toggle('hidden-row', status !== 'all' && r.dataset.status !== status);
+  });
+  document.querySelectorAll('[id^="fb-' + tab + '"]').forEach(function(b) { b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  var afb = document.getElementById('afb-' + tab);
+  if (afb) afb.classList.toggle('visible', status !== 'all');
+}
+var sortState = {};
+function sortTable(tab, colIdx) {
+  var table = document.getElementById('table-' + tab);
+  var tbody = document.getElementById('tbody-' + tab);
+  if (!tbody) return;
+  var key = tab + '-' + colIdx;
+  var asc = sortState[key] !== 'asc';
+  sortState[key] = asc ? 'asc' : 'desc';
+  table.querySelectorAll('th').forEach(function(th, i) {
+    th.classList.remove('sort-asc','sort-desc');
+    if (i === colIdx) th.classList.add(asc ? 'sort-asc' : 'sort-desc');
+  });
+  var rows = Array.from(tbody.querySelectorAll('tr[data-status]'));
+  rows.sort(function(a, b) {
+    var ac = a.cells[colIdx], bc = b.cells[colIdx];
+    if (!ac || !bc) return 0;
+    var an = ac.dataset.val !== undefined ? parseFloat(ac.dataset.val) : NaN;
+    var bn = bc.dataset.val !== undefined ? parseFloat(bc.dataset.val) : NaN;
+    if (!isNaN(an) && !isNaN(bn)) return asc ? an - bn : bn - an;
+    return asc ? ac.innerText.trim().localeCompare(bc.innerText.trim()) : bc.innerText.trim().localeCompare(ac.innerText.trim());
+  });
+  rows.forEach(function(r) { tbody.appendChild(r); });
+}
+</script>
+</body>
+</html>
