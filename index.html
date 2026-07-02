@@ -127,7 +127,7 @@ tr.hidden-row{display:none;}
     <div class="header-icon">&#x1F3E0;</div>
     <div>
       <div class="header-brand">Base de Propiedades</div>
-      <div class="header-sub">Agencia Inmobiliaria &middot; 6 clientes activos </div>
+      <div class="header-sub">Agencia Inmobiliaria &middot; 10 clientes activos </div>
     </div>
   </div>
   <div class="header-right">
@@ -144,7 +144,11 @@ tr.hidden-row{display:none;}
   <div class="tab" onclick="switchTab('victoria',this)">&#x1F3ED; La Victoria <span class="count">2</span></div>
   <div class="tab" onclick="switchTab('alquiler-mira',this)">&#x1F3E0; Alquiler Mira &middot; Deyssi <span class="count">3</span></div>
   <div class="tab" onclick="switchTab('wilson',this)">&#x1F3E0; Depa 90K &middot; Wilson <span class="count">3</span></div>
-  <div class="tab" onclick="switchTab('depa200k',this)">&#x1F3E0; Depa 210K &middot; Fabrizio <span class="count">8</span></div>
+  <div class="tab" onclick="switchTab('depa200k',this)">&#x1F3E0; Depa 220K &middot; Fabrizio <span class="count">8</span></div>
+  <div class="tab" onclick="switchTab('restaurante',this)">&#x1F3EA; Restaurante &middot; Extranjero <span class="count">0</span></div>
+  <div class="tab" onclick="switchTab('camila',this)">&#x1F31F; Lujo &middot; Camila <span class="count">0</span></div>
+  <div class="tab" onclick="switchTab('mariana',this)">&#x1F30A; Malecon &middot; Mariana <span class="count">0</span></div>
+  <div class="tab" onclick="switchTab('chifa',this)">&#x1F962; Chifa &middot; Amiga Chino <span class="count">0</span></div>
 </div>
 
 <div class="main">
@@ -443,7 +447,7 @@ tr.hidden-row{display:none;}
       <div class="cc-chips">
         <span class="chip">&#x1F464; Depa $200K</span>
         <span class="chip">&#x1F4CD; Santiago de Surco / San Borja</span>
-        <span class="chip">&#x1F4B0; M&aacute;x. USD 210,000</span>
+        <span class="chip">&#x1F4B0; M&aacute;x. USD 220,000</span>
         <span class="chip">&#x1F4D0; M&iacute;n. 100 m&sup2;</span>
         <span class="chip">&#x1F6CF; 3 dormitorios</span>
         <span class="chip">&#x1F697; Cochera indispensable</span>
@@ -496,6 +500,169 @@ tr.hidden-row{display:none;}
   </div>
 </div>
 
+
+<!-- RESTAURANTE EXTRANJERO -->
+<div id="panel-restaurante" class="panel">
+  <div class="client-card compra">
+    <div class="client-card-header">
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
+      <span class="badge badge-compra">Compra</span>
+      <div class="cc-chips">
+        <span class="chip">&#x1F464; Cliente Extranjero</span>
+        <span class="chip">&#x1F4CD; San Isidro / Surco</span>
+        <span class="chip">&#x1F4B0; USD 800,000</span>
+        <span class="chip">&#x1F3EA; Casa o local comercial</span>
+        <span class="chip">&#x1F35C; Restaurante chifa o criollo</span>
+        <span class="chip">&#x1F37A; Licencia bebidas alcoh&oacute;licas</span>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <div class="table-header"><span class="table-title">&#x1F3EA; Propiedades encontradas</span></div>
+    <div class="table-scroll"><table id="table-restaurante"><thead><tr>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('restaurante',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('restaurante',3)">Distrito</th>
+      <th onclick="sortTable('restaurante',4)">Precio</th>
+      <th onclick="sortTable('restaurante',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('restaurante',6)">$/m&sup2;</th>
+      <th onclick="sortTable('restaurante',7)">Ba&ntilde;os</th>
+      <th onclick="sortTable('restaurante',8)">Cocheras</th>
+      <th onclick="sortTable('restaurante',9)">Corredor</th>
+      <th onclick="sortTable('restaurante',10)">Estado</th>
+      <th onclick="sortTable('restaurante',11)">Comisi&oacute;n</th>
+      <th onclick="sortTable('restaurante',12)">Score</th>
+      <th class="no-sort">Motivo</th>
+      <th class="no-sort">Cond. Comerciales</th>
+      <th class="no-sort">Comentario</th>
+      <th class="no-sort">Aviso</th>
+    </tr></thead>
+    <tbody id="tbody-restaurante"><tr class="empty-row"><td colspan="17">Sin propiedades a&uacute;n &mdash; manda el primer link</td></tr></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- CAMILA LUJO -->
+<div id="panel-camila" class="panel">
+  <div class="client-card alquiler">
+    <div class="client-card-header">
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
+      <span class="badge badge-alquiler">Alquiler</span>
+      <div class="cc-chips">
+        <span class="chip">&#x1F464; Camila</span>
+        <span class="chip">&#x1F4CD; San Isidro / Miraflores</span>
+        <span class="chip">&#x1F4B0; USD 6,500/mes</span>
+        <span class="chip">&#x1F3E0; Departamento de lujo</span>
+        <span class="chip">&#x1F4D0; Grande</span>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <div class="table-header"><span class="table-title">&#x1F31F; Propiedades encontradas</span></div>
+    <div class="table-scroll"><table id="table-camila"><thead><tr>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('camila',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('camila',3)">Distrito</th>
+      <th onclick="sortTable('camila',4)">Precio</th>
+      <th onclick="sortTable('camila',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('camila',6)">$/m&sup2;</th>
+      <th onclick="sortTable('camila',7)">Dorm.</th>
+      <th onclick="sortTable('camila',8)">Ba&ntilde;os</th>
+      <th onclick="sortTable('camila',9)">Cocheras</th>
+      <th onclick="sortTable('camila',10)">Corredor</th>
+      <th onclick="sortTable('camila',11)">Estado</th>
+      <th onclick="sortTable('camila',12)">Comisi&oacute;n</th>
+      <th onclick="sortTable('camila',13)">Score</th>
+      <th class="no-sort">Motivo</th>
+      <th class="no-sort">Cond. Comerciales</th>
+      <th class="no-sort">Comentario</th>
+      <th class="no-sort">Aviso</th>
+    </tr></thead>
+    <tbody id="tbody-camila"><tr class="empty-row"><td colspan="18">Sin propiedades a&uacute;n &mdash; manda el primer link</td></tr></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- MARIANA MALECON -->
+<div id="panel-mariana" class="panel">
+  <div class="client-card alquiler">
+    <div class="client-card-header">
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
+      <span class="badge badge-alquiler">Alquiler</span>
+      <div class="cc-chips">
+        <span class="chip">&#x1F464; Mariana</span>
+        <span class="chip">&#x1F4CD; Miraflores &mdash; Mal&eacute;con / Armend&aacute;ris</span>
+        <span class="chip">&#x1F4B0; USD 1,500/mes</span>
+        <span class="chip">&#x1F4D0; M&iacute;n. 100 m&sup2;</span>
+        <span class="chip">&#x1F3E0; Departamento</span>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <div class="table-header"><span class="table-title">&#x1F30A; Propiedades encontradas</span></div>
+    <div class="table-scroll"><table id="table-mariana"><thead><tr>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('mariana',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('mariana',3)">Distrito</th>
+      <th onclick="sortTable('mariana',4)">Precio</th>
+      <th onclick="sortTable('mariana',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('mariana',6)">$/m&sup2;</th>
+      <th onclick="sortTable('mariana',7)">Dorm.</th>
+      <th onclick="sortTable('mariana',8)">Ba&ntilde;os</th>
+      <th onclick="sortTable('mariana',9)">Cocheras</th>
+      <th onclick="sortTable('mariana',10)">Corredor</th>
+      <th onclick="sortTable('mariana',11)">Estado</th>
+      <th onclick="sortTable('mariana',12)">Comisi&oacute;n</th>
+      <th onclick="sortTable('mariana',13)">Score</th>
+      <th class="no-sort">Motivo</th>
+      <th class="no-sort">Cond. Comerciales</th>
+      <th class="no-sort">Comentario</th>
+      <th class="no-sort">Aviso</th>
+    </tr></thead>
+    <tbody id="tbody-mariana"><tr class="empty-row"><td colspan="18">Sin propiedades a&uacute;n &mdash; manda el primer link</td></tr></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- CHIFA AMIGA CHINO -->
+<div id="panel-chifa" class="panel">
+  <div class="client-card alquiler">
+    <div class="client-card-header">
+      <span class="cc-label">Requerimiento</span><div class="cc-divider"></div>
+      <span class="badge badge-alquiler">Alquiler</span>
+      <div class="cc-chips">
+        <span class="chip">&#x1F464; Amiga Chino</span>
+        <span class="chip">&#x1F4CD; Surco / La Molina / Surquillo (no Aviaci&oacute;n)</span>
+        <span class="chip">&#x1F4B0; USD 5,000/mes</span>
+        <span class="chip">&#x1F4D0; M&iacute;n. 200 m&sup2;</span>
+        <span class="chip">&#x1F962; Local para Chifa</span>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <div class="table-header"><span class="table-title">&#x1F962; Propiedades encontradas</span></div>
+    <div class="table-scroll"><table id="table-chifa"><thead><tr>
+      <th class="no-sort">#</th><th class="no-sort">Ficha</th>
+      <th onclick="sortTable('chifa',2)">Direcci&oacute;n</th>
+      <th onclick="sortTable('chifa',3)">Distrito</th>
+      <th onclick="sortTable('chifa',4)">Precio</th>
+      <th onclick="sortTable('chifa',5)">&Aacute;rea m&sup2;</th>
+      <th onclick="sortTable('chifa',6)">$/m&sup2;</th>
+      <th onclick="sortTable('chifa',7)">Ba&ntilde;os</th>
+      <th onclick="sortTable('chifa',8)">Cocheras</th>
+      <th onclick="sortTable('chifa',9)">Corredor</th>
+      <th onclick="sortTable('chifa',10)">Estado</th>
+      <th onclick="sortTable('chifa',11)">Comisi&oacute;n</th>
+      <th onclick="sortTable('chifa',12)">Score</th>
+      <th class="no-sort">Motivo</th>
+      <th class="no-sort">Cond. Comerciales</th>
+      <th class="no-sort">Comentario</th>
+      <th class="no-sort">Aviso</th>
+    </tr></thead>
+    <tbody id="tbody-chifa"><tr class="empty-row"><td colspan="17">Sin propiedades a&uacute;n &mdash; manda el primer link</td></tr></tbody>
+    </table></div>
+  </div>
+</div>
 </div>
 <div class="footer">&#x1F3E0; Base de Propiedades &middot; Agencia Inmobiliaria &middot; Actualizado: <span id="fdate"></span></div>
 
